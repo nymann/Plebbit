@@ -3,8 +3,12 @@ package com.plebbit.database;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
+import com.plebbit.dto.Item;
+import com.plebbit.dto.ListProperties;
+import com.plebbit.dto.User;
 
 public class PlebbitDatabase implements IPlebbitDatabase{
 
@@ -83,10 +87,10 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean addUserToList(String username, int listNr) {
-		String sqlQueryTwo = "select * from users where username = '"+username+"';";
+		String sqlQuery = "select * from users where username = '"+username+"';";
 		ResultSet set;
 		try {
-			set = DatabaseConnector.queryInDatabase(sqlQueryTwo);
+			set = DatabaseConnector.queryInDatabase(sqlQuery);
 			int id = 0;
 			if(set.next()){
 				id = set.getInt(1);
@@ -101,7 +105,49 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public ListProperties getList(int listNr) {
-		// TODO Auto-generated method stub
+		ListProperties prop = new ListProperties();
+		prop.users = new ArrayList<User>();
+		prop.items = new ArrayList<Item>();
+		String sqlQuery = "select * from lists where listid = "+listNr+";";
+		try {
+			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
+			if(set.next()){
+				prop.nameOfList = set.getString(2);
+			}
+			
+			String sqlQueryTwo = "select * from listmembers where listid = "+listNr+";";
+			ResultSet setTwo = DatabaseConnector.queryInDatabase(sqlQueryTwo);
+			while(setTwo.next()){
+				String sqlQueryThree = "select * from users where userid = "+setTwo.getInt(2)+";";
+				ResultSet setThree = DatabaseConnector.queryInDatabase(sqlQueryThree);
+				if(setThree.next()){
+					User user = new User();
+					user.userId = setTwo.getInt(2);
+					user.name = setThree.getString(2);
+					user.token = setThree.getString(3);
+					prop.users.add(user);
+				}
+			}
+			
+			String sqlQueryFour = "select * from items where listid = "+listNr+";";
+			ResultSet setFour = DatabaseConnector.queryInDatabase(sqlQueryFour);
+			while(setFour.next()){
+				Item item = new Item();
+				item.name = setFour.getString(2);
+				int userId = setFour.getInt(3);
+				for(int i = 0 ; i < prop.users.size(); i++){
+					if(prop.users.get(i).userId == userId){
+						item.user = prop.users.get(i);
+						break;
+					}
+				}
+				prop.items.add(item);
+			}
+			return prop;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 

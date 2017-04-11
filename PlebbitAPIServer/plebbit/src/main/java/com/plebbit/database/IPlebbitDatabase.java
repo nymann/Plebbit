@@ -2,6 +2,8 @@ package com.plebbit.database;
 
 import java.sql.SQLException;
 
+import com.plebbit.dto.ListProperties;
+
 public interface IPlebbitDatabase {
 
 	public void checkTables() throws SQLException;
