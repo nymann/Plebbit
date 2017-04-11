@@ -12,6 +12,7 @@ body {
     margin: 0 auto;
 }
 
+/* HEADER BEGIN */
 header {
     margin: 0 auto;
     width: 100%;
@@ -33,16 +34,26 @@ header {
     display: inline;
 }
 
-nav {
-    min-width: 100%;
+/* HEADER END*/
+
+/* NAVIGATION BAR BEGIN*/
+#navwrap {
     width: 100%;
-    min-height: 50px;
-    margin-top: 50px;
     background-color: #339999;
+    height: 50px;
+}
+
+nav {
+    width: 75%;
+    background-color: #339999;
+    height: 50px;
     color: #ccffff;
     font-size: 20px;
-    display: block;
-    overflow: hidden;
+    display: inline;
+}
+
+#logout {
+    margin-left: 50px;
 }
 
 nav ul {
@@ -52,7 +63,7 @@ nav ul {
 
 nav ul li {
     font-weight: bold;
-    display: inline-block;
+    display: inline;
     list-style-type: none;
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
@@ -63,12 +74,14 @@ nav ul li {
 
 nav > ul > li > a {
     color: #ccffff;
-    display: block;
+    display: inline;
     line-height: 56px;
     padding: 0 24px;
     text-decoration: none;
     letter-spacing: -1px;
 }
+
+/* NAVIGATION BAR END */
 
 #content {
     width: 75%;
@@ -104,11 +117,11 @@ nav > ul > li > a {
     margin-top: 50px;
 }
 
-#username:hover, #password:hover, #new-password:hover, #new-password-again:hover, #email:hover {
+#username:hover, #password:hover, #new-password:hover, #new-password-again:hover {
     box-shadow: 0 0 5px #888888;
 }
 
-#username, #password, #new-password, #new-password-again, #email {
+#username, #password, #new-password, #new-password-again {
     margin-top: 30px;
     background-color: #99cccc;
     padding: 9px 9px 9px 9px;
@@ -121,7 +134,7 @@ nav > ul > li > a {
     text-transform: uppercase;
 }
 
-#login-button, button, #email-button, #password-button{
+#login-button, button, #forgot-button, #password-button{
     color: #99cccc;
     border: none;
     text-transform: uppercase;
@@ -133,6 +146,8 @@ nav > ul > li > a {
     font-family: 'Roboto', monospace;
     text-align: center;
 }
+
+
 
 footer {
     width: 100%;
