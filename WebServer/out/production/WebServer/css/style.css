@@ -56,10 +56,8 @@ nav > ul > li > a {
 }
 
 #content {
-    width: 910px;
-    min-width: 910px;
-    max-width: 910px;
-    min-height: 400px;
+    width: 75%;
+    min-height: 60%;
     background-color: #ecfbfb;
     color: #000;
     margin: 0 auto;
@@ -97,14 +95,14 @@ nav > ul > li > a {
 
 #username, #password {
     margin-top: 30px;
-    background-color: #339999;
+    background-color: #99cccc;
     padding: 9px 9px 9px 9px;
     font-size: 20px;
     text-align: center;
     font-family: 'Roboto', monospace;
     width: 100%;
     border: none;
-    color: #ccffff;
+    color: #ecfbfb;
     text-transform: uppercase;
 }
 
