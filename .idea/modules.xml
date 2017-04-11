@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/WebServer/WebServer.iml" filepath="$PROJECT_DIR$/WebServer/WebServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PlebbitAPIServer/plebbit/plebbit.iml" filepath="$PROJECT_DIR$/PlebbitAPIServer/plebbit/plebbit.iml" />
+    </modules>
+  </component>
+</project>
