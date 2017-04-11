@@ -30,13 +30,12 @@ public class Servlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if (request.getParameter("email") != null) {
+        if (request.getParameter("username") != null && request.getParameter("password") == null) {
             /*
              * Forgot password
              *
              */
-
-            //iPlebbit.forgotMail(request.getParameter(" email"));
+            iPlebbit.forgotPassword(request.getParameter("username"));
         }
 
         if (request.getParameter("password-again") != null) {
@@ -44,7 +43,7 @@ public class Servlet extends HttpServlet {
              * Change password
              */
 
-            //iPlebbit.forgotPassword(
+
 
             String newPassword = request.getParameter("new-password");
             String newPasswordAgain = request.getParameter("new-password-again");
@@ -63,13 +62,15 @@ public class Servlet extends HttpServlet {
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
                 if (login(username, password)) {
-                    // Forward to the new page.
-                    request.getRequestDispatcher("index.html").forward(request, response);
+                    iPlebbit.changePassword(username, password, newPassword);
+                    request.getRequestDispatcher("Shoppinglists.jsp").forward(request, response);
                 }
 
                 else {
                     request.getRequestDispatcher("Change.html").forward(request, response);
                 }
+
+
             }
         }
 
