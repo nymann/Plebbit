@@ -12,6 +12,7 @@ import javax.xml.ws.Service;
 
 import com.plebbit.database.DatabaseConnector;
 import com.plebbit.database.PlebbitDatabase;
+import com.plebbit.dto.ListProperties;
 
 import brugerautorisation.transport.soap.Brugeradmin;
 
@@ -53,4 +54,93 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		return "";
 	}
 
+	@Override
+	public void forgotPassword(String username) {
+		Brugeradmin ba = null;
+		try {
+			URL url = new URL("http://javabog.dk:9901/brugeradmin?wsdl");
+			QName qname = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplService");
+			Service service = Service.create(url, qname);
+			ba = service.getPort(Brugeradmin.class);
+			ba.sendGlemtAdgangskodeEmail(username, "Sent from plebbit server");
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	@Override
+	public void changePassword(String username, String oldPassword, String newPassword) {
+		Brugeradmin ba = null;
+		try {
+			URL url = new URL("http://javabog.dk:9901/brugeradmin?wsdl");
+			QName qname = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplService");
+			Service service = Service.create(url, qname);
+			ba = service.getPort(Brugeradmin.class);
+			ba.ændrAdgangskode(username, oldPassword, newPassword);
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	@Override
+	public int[] getListOfUser(String token) {
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return null;
+		}
+		return PlebbitDatabase.db.getListsForUser(PlebbitDatabase.db.getUsernameFromToken(token));
+	}
+
+	@Override
+	public ListProperties getListFromId(int id, String token) {
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return null;
+		}
+		return PlebbitDatabase.db.getList(id);
+	}
+
+	@Override
+	public boolean addUserToList(int listId, String token, String inviteUserName) {
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return false;
+		}
+		return PlebbitDatabase.db.addUserToList(inviteUserName, listId);
+	}
+
+	@Override
+	public void createNewList(String token, String listname) {
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return;
+		}
+		PlebbitDatabase.db.createList(listname, PlebbitDatabase.db.getUsernameFromToken(token));	
+		
+	}
+
+	@Override
+	public boolean deleteList(String token, int listId) {
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return false;
+		}
+		return PlebbitDatabase.db.deleteList(token, listId);
+	}
+
+	@Override
+	public void addItemToList(String token, String item, int listId) {
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return;
+		}
+		PlebbitDatabase.db.addItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
+	}
+
+	@Override
+	public boolean removeItemFromList(String token, String item, int listId) {
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return false;
+		}
+		return PlebbitDatabase.db.removeItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
+	}
+
+	@Override
+	public void logout(String token) {
+		PlebbitDatabase.db.updateToken(PlebbitDatabase.db.getUsernameFromToken(token), "");
+	}
 }

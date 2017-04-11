@@ -12,6 +12,8 @@ import com.plebbit.dto.User;
 
 public class PlebbitDatabase implements IPlebbitDatabase{
 
+	public static PlebbitDatabase db;
+	
 	@Override
 	public void checkTables() throws SQLException{
 		DatabaseMetaData databaseMeta = DatabaseConnector.getTotalConnector().getConnection().getMetaData();
@@ -56,6 +58,9 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean createUser(String username) {
+		if(this.userExists(username)){
+			return false;
+		}
 		String sqlQuery = "INSERT INTO users (username, token, time) VALUES('"+username+"', '', '');";
 		try {
 			DatabaseConnector.updateInDatabase(sqlQuery);
@@ -181,6 +186,142 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	public boolean updateTime(int userId) {
 		String time = System.nanoTime()+"";
 		String sqlUpdate = "UPDATE users set time = '"+time+"' where userid = "+userId+";";
+		try {
+			DatabaseConnector.updateInDatabase(sqlUpdate);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public int[] getListsForUser(String username) {
+		ArrayList<Integer> listid = new ArrayList<Integer>();
+		int id = getIdFromUsername(username);
+		if(id != -1){
+			String sqlQuery = "select * from listmembers where userid = "+id+";";
+			ResultSet set;
+			try {
+				set = DatabaseConnector.queryInDatabase(sqlQuery);
+				while(set.next()){
+					listid.add(set.getInt(1));
+				}
+				int[] listids = new int[listid.size()];
+				for(int i = 0; i < listids.length; i++){
+					listids[i] = listid.get(i);
+				}
+				return listids;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public String getUsernameFromToken(String token) {
+		String sqlQuery = "select * from users where token = '"+token+"';";
+		try {
+			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
+			if(set.next()){
+				String usrname = set.getString(2);
+				return usrname;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	@Override
+	public int getIdFromUsername(String username) {
+		String sqlQuery = "select * from users where username = '"+username+"';";
+		ResultSet set;
+		try {
+			set = DatabaseConnector.queryInDatabase(sqlQuery);
+			if(set.next()){
+				return set.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+		
+	}
+
+	@Override
+	public boolean isValidToken(String token) {
+		String sqlQuery = "select * from users where token = '"+token+"';";
+		try {
+			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
+			if(set.next()){
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteList(String token, int listId) {
+		ListProperties lp = PlebbitDatabase.db.getList(listId);
+		if(lp.users.size() > 0){
+			if(lp.users.get(0).token == token){
+				//Is owner
+				try {
+					String sqlUpdate = "delete from listmembers where listid = "+listId+";";
+					DatabaseConnector.updateInDatabase(sqlUpdate);
+					String sqlUpdate2 = "delete from lists where listid = "+listId+";";
+					DatabaseConnector.updateInDatabase(sqlUpdate2);
+					return true;
+				} catch (SQLException e) {
+					e.printStackTrace();
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean addItem(String itemName, int listId, int userId) {
+		ListProperties lp = PlebbitDatabase.db.getList(listId);
+		boolean exists = false;
+		for(int i = 0; i < lp.users.size(); i++){
+			if(lp.users.get(i).userId == userId){
+				exists = true;
+			}
+		}
+		if(!exists){
+			return false;
+		}
+		String sqlUpdate = "insert into items (listid, itemname, userid) values ("+listId+",'"+itemName+"',"+userId+");";
+		try {
+			DatabaseConnector.updateInDatabase(sqlUpdate);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean removeItem(String itemName, int listId, int userId) {
+		ListProperties lp = PlebbitDatabase.db.getList(listId);
+		boolean exists = false;
+		for(int i = 0; i < lp.users.size(); i++){
+			if(lp.users.get(i).userId == userId){
+				exists = true;
+			}
+		}
+		if(!exists){
+			return false;
+		}
+		String sqlUpdate = "delete from items where itemname = '"+itemName+"';";
 		try {
 			DatabaseConnector.updateInDatabase(sqlUpdate);
 		} catch (SQLException e) {

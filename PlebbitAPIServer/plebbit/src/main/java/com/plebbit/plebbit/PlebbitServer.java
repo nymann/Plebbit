@@ -12,6 +12,7 @@ public class PlebbitServer {
 
 	public static void main(String[] args) {
 		PlebbitDatabase db = new PlebbitDatabase();
+		PlebbitDatabase.db = db;
 		try {
 			db.checkTables();
 		} catch (SQLException e1) {
