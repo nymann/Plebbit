@@ -16,6 +16,21 @@ header {
     margin: 0 auto;
     width: 100%;
     opacity: 0.6;
+    font-size: 60px;
+    letter-spacing:-3px;
+    max-height: 144px;
+}
+
+#logopic {
+    display: inline;
+}
+
+#logo {
+    display: inline;
+}
+
+#logo h1 {
+    display: inline;
 }
 
 nav {
