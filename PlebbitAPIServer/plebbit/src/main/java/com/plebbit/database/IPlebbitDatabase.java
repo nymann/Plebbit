@@ -19,4 +19,8 @@ public interface IPlebbitDatabase {
 	public ListProperties getList(int listNr);
 	
 	public boolean updateToken(String username, String newToken);
+	
+	public boolean updateTime(String username);
+	
+	public boolean updateTime(int userId);
 }

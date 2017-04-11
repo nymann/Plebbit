@@ -17,7 +17,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 		DatabaseMetaData databaseMeta = DatabaseConnector.getTotalConnector().getConnection().getMetaData();
 		ResultSet usersTable = databaseMeta.getTables(null, null, "users", null);
 		if (!usersTable.next()) {
-			String sqlQuery = "CREATE TABLE users (userid INTEGER NOT NULL AUTO_INCREMENT, username VARCHAR(30) NOT NULL, token VARCHAR(50) NOT NULL, PRIMARY KEY (userid));";
+			String sqlQuery = "CREATE TABLE users (userid INTEGER NOT NULL AUTO_INCREMENT, username VARCHAR(30) NOT NULL, token VARCHAR(50) NOT NULL, time VARCHAR(50), PRIMARY KEY (userid));";
 			DatabaseConnector.updateInDatabase(sqlQuery);
 		}
 		
@@ -56,7 +56,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean createUser(String username) {
-		String sqlQuery = "INSERT INTO users (username, token) VALUES('"+username+"', '');";
+		String sqlQuery = "INSERT INTO users (username, token, time) VALUES('"+username+"', '', '');";
 		try {
 			DatabaseConnector.updateInDatabase(sqlQuery);
 			return true;
@@ -125,6 +125,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 					user.userId = setTwo.getInt(2);
 					user.name = setThree.getString(2);
 					user.token = setThree.getString(3);
+					user.time = setThree.getString(4);
 					prop.users.add(user);
 				}
 			}
@@ -154,6 +155,32 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	@Override
 	public boolean updateToken(String username, String newToken) {
 		String sqlUpdate = "UPDATE users set token = '"+newToken+"' where username = '"+username+"';";
+		try {
+			DatabaseConnector.updateInDatabase(sqlUpdate);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean updateTime(String username) {
+		String time = System.nanoTime()+"";
+		String sqlUpdate = "UPDATE users set time = '"+time+"' where username = '"+username+"';";
+		try {
+			DatabaseConnector.updateInDatabase(sqlUpdate);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean updateTime(int userId) {
+		String time = System.nanoTime()+"";
+		String sqlUpdate = "UPDATE users set time = '"+time+"' where userid = "+userId+";";
 		try {
 			DatabaseConnector.updateInDatabase(sqlUpdate);
 		} catch (SQLException e) {

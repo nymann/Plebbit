@@ -15,7 +15,7 @@ import com.plebbit.database.PlebbitDatabase;
 
 import brugerautorisation.transport.soap.Brugeradmin;
 
-@WebService(endpointInterface = "plebbit.IPlebbit")
+@WebService(endpointInterface = "com.plebbit.plebbit.IPlebbit")
 public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 
 	protected PlebbitLogic() throws RemoteException {
@@ -42,8 +42,9 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			}
 			Random rand = new Random();
 			int num = rand.nextInt(1000);
-			String token = System.nanoTime()+username.charAt(0)+""+num;
+			String token = System.nanoTime()+""+num;
 			base.updateToken(username, token);
+			base.updateTime(username);
 			return token;
 			
 		} catch(IllegalArgumentException e){
