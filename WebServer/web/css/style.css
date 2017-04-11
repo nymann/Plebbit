@@ -1,0 +1,131 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+body {
+    background-color: #99cccc;
+    font-family: 'Roboto', monospace;
+    -webkit-font-smoothing: antialiased;
+}
+
+#wrap {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+header {
+    margin: 0 auto;
+    width: 100%;
+    opacity: 0.6;
+}
+
+nav {
+    min-width: 100%;
+    width: 100%;
+    min-height: 50px;
+    margin-top: 50px;
+    background-color: #339999;
+    color: #ccffff;
+    font-size: 20px;
+    display: block;
+    overflow: hidden;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    font-weight: bold;
+    display: inline-block;
+    list-style-type: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+nav > ul > li > a {
+    color: #ccffff;
+    display: block;
+    line-height: 56px;
+    padding: 0 24px;
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+#content {
+    width: 75%;
+    min-height: 60%;
+    background-color: #ecfbfb;
+    color: #000;
+    margin: 0 auto;
+}
+
+#left {
+    float: left;
+    width: 302px;
+    height: 400px;
+    margin: 0 0;
+}
+
+#mid {
+    overflow: hidden;
+    display: inline-block;
+    width: 301px;
+    height: 400px;
+    margin: 0 0;
+}
+
+#right {
+    float: right;
+    width: 301px;
+    height: 400px;
+    margin: 0 0;
+}
+
+#login {
+    margin-top: 50px;
+}
+
+#username:hover, #password:hover {
+    box-shadow: 0 0 5px #888888;
+}
+
+#username, #password {
+    margin-top: 30px;
+    background-color: #339999;
+    padding: 9px 9px 9px 9px;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Roboto', monospace;
+    width: 100%;
+    border: none;
+    color: #ccffff;
+    text-transform: uppercase;
+}
+
+#login-button, button {
+    color: #99cccc;
+    border: none;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 14px;
+    padding: 9px 9px 9px 9px;
+    background-color: inherit;
+    font-family: 'Roboto', monospace;
+    text-align: center;
+}
+
+footer {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    color: #ccffff;
+}
