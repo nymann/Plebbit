@@ -1,56 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c710fd0-ca97-436f-9e00-9bfcf1941884" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../PlebbitAPIServer/plebbit/plebbit.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_14_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_owlike_genson_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_mail_mail_1_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_ws_rs_javax_ws_rs_api_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_asm_all_repackaged_2_1_88.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_cglib_2_1_88.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_javax_inject_2_1_88.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_api_2_1_88.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_locator_2_1_88.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_utils_2_1_88.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_osgi_resource_locator_1_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_client_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_common_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/plebbit/plebbit/IPlebbit.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/Change.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/Forgot.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/META-INF/context.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/Servlet.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/WEB-INF/web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/img/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServer/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Servlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/com/plebbit/database/DatabaseConnector.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/com/plebbit/database/DatabaseTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/com/plebbit/database/DatabaseVariables.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/com/plebbit/database/IPlebbitDatabase.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/com/plebbit/database/ListProperties.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/com/plebbit/database/PlebbitDatabase.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/img/Untitled-3.psd" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Servlet.class" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Servlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServer.iml" afterPath="$PROJECT_DIR$/WebServer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Change.html" afterPath="$PROJECT_DIR$/web/Change.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Forgot.html" afterPath="$PROJECT_DIR$/web/Forgot.html" />
-    </list>
+    <list default="true" id="6c710fd0-ca97-436f-9e00-9bfcf1941884" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -876,12 +827,12 @@
       <option name="presentableId" value="Default" />
       <updated>1491897626923</updated>
       <workItem from="1491897642639" duration="9858000" />
-      <workItem from="1491910787417" duration="6943000" />
+      <workItem from="1491910787417" duration="7034000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16801000" />
+    <option name="totallyTimeSpent" value="16892000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
