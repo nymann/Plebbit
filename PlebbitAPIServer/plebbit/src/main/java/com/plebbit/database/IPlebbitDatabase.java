@@ -19,4 +19,22 @@ public interface IPlebbitDatabase {
 	public ListProperties getList(int listNr);
 	
 	public boolean updateToken(String username, String newToken);
+	
+	public boolean updateTime(String username);
+	
+	public boolean updateTime(int userId);
+	
+	public int[] getListsForUser(String username);
+	
+	public String getUsernameFromToken(String token);
+	
+	public int getIdFromUsername(String username);
+	
+	public boolean isValidToken(String token);
+	
+	public boolean deleteList(String token, int listId);
+	
+	public boolean addItem(String itemName, int listId, int userId);
+	
+	public boolean removeItem(String itemName, int listId, int userId);
 }
