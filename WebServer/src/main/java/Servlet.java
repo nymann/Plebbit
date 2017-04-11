@@ -23,6 +23,7 @@ public class Servlet extends HttpServlet {
     private QName plebbitQName = new QName("http://plebbit.plebbit.com/", "PlebbitLogicService");
     private Service plebbitService = Service.create(plebbitUrl, plebbitQName);
     private IPlebbit iPlebbit = plebbitService.getPort(IPlebbit.class);
+    private String tokenId = "";
 
     public Servlet() throws MalformedURLException {
     }
@@ -42,6 +43,8 @@ public class Servlet extends HttpServlet {
             /*
              * Change password
              */
+
+            //iPlebbit.forgotPassword(
 
             String newPassword = request.getParameter("new-password");
             String newPasswordAgain = request.getParameter("new-password-again");
@@ -98,7 +101,7 @@ public class Servlet extends HttpServlet {
 
     private boolean login(String username, String password) {
         // If the token we get back is empty, the login failed, if it's not empty we are logged in.
-        String token = iPlebbit.login(username, password);
-        return !token.isEmpty();
+        tokenId = iPlebbit.login(username, password);
+        return !tokenId.isEmpty();
     }
 }

@@ -16,6 +16,21 @@ header {
     margin: 0 auto;
     width: 100%;
     opacity: 0.6;
+    font-size: 60px;
+    letter-spacing:-3px;
+    max-height: 144px;
+}
+
+#logopic {
+    display: inline;
+}
+
+#logo {
+    display: inline;
+}
+
+#logo h1 {
+    display: inline;
 }
 
 nav {
@@ -89,11 +104,11 @@ nav > ul > li > a {
     margin-top: 50px;
 }
 
-#username:hover, #password:hover {
+#username:hover, #password:hover, #new-password:hover, #new-password-again:hover, #email:hover {
     box-shadow: 0 0 5px #888888;
 }
 
-#username, #password {
+#username, #password, #new-password, #new-password-again, #email {
     margin-top: 30px;
     background-color: #99cccc;
     padding: 9px 9px 9px 9px;
@@ -106,7 +121,7 @@ nav > ul > li > a {
     text-transform: uppercase;
 }
 
-#login-button, button {
+#login-button, button, #email-button, #password-button{
     color: #99cccc;
     border: none;
     text-transform: uppercase;

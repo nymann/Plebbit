@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c710fd0-ca97-436f-9e00-9bfcf1941884" name="Default" comment="" />
+    <list default="true" id="6c710fd0-ca97-436f-9e00-9bfcf1941884" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/Shoppinglists.jsp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/img/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/img/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/img/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/img/logo.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Change.html" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Change.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Forgot.html" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Forgot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Change.html" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Change.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Forgot.html" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Forgot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/css/style.css" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/index.html" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/style.css" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/css/style.css" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/index.html" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Change.html" afterPath="$PROJECT_DIR$/target/classes/Change.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Forgot.html" afterPath="$PROJECT_DIR$/target/classes/Forgot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/css/style.css" afterPath="$PROJECT_DIR$/target/classes/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/index.html" afterPath="$PROJECT_DIR$/target/classes/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/style.css" afterPath="$PROJECT_DIR$/target/classes/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Change.html" afterPath="$PROJECT_DIR$/web/Change.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Forgot.html" afterPath="$PROJECT_DIR$/web/Forgot.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/style.css" afterPath="$PROJECT_DIR$/web/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +48,8 @@
       <file leaf-file-name="Servlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Servlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="89" column="59" lean-forward="false" selection-start-line="89" selection-start-column="59" selection-end-line="89" selection-end-column="59" />
+            <state relative-caret-position="1490">
+              <caret line="103" column="16" lean-forward="true" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -29,11 +57,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Shoppinglists.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/Shoppinglists.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="27" column="42" lean-forward="false" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="34" column="21" lean-forward="true" selection-start-line="31" selection-start-column="12" selection-end-line="34" selection-end-column="21" />
+            <state relative-caret-position="493">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -42,8 +80,8 @@
       <file leaf-file-name="Forgot.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/Forgot.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="35" column="26" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="26" />
+            <state relative-caret-position="255">
+              <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -52,8 +90,18 @@
       <file leaf-file-name="Change.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/Change.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="39" column="98" lean-forward="false" selection-start-line="39" selection-start-column="98" selection-end-line="39" selection-end-column="98" />
+            <state relative-caret-position="238">
+              <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="15" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="119" column="19" lean-forward="true" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -79,12 +127,14 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>mail</find>
+      <find>token</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -105,7 +155,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Servlet.java" />
-        <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/src/IPlebbit.java" />
         <option value="$PROJECT_DIR$/src/java/com/plebbit/plebbit/IPlebbit.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/plebbit/database/PlebbitDatabase.java" />
@@ -129,9 +178,11 @@
         <option value="$PROJECT_DIR$/src/main/java/IPlebbit.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/plebbit/plebbit/Servlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/plebbit/plebbit/main.java" />
+        <option value="$PROJECT_DIR$/web/Change.html" />
         <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/web/Forgot.html" />
-        <option value="$PROJECT_DIR$/web/Change.html" />
+        <option value="$PROJECT_DIR$/web/css/style.css" />
+        <option value="$PROJECT_DIR$/web/Shoppinglists.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/Servlet.java" />
       </list>
     </option>
@@ -212,6 +263,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -734,7 +803,7 @@
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 9.0.0.M1" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M1" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:3053/" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:3063/" />
       <deployment>
         <artifact name="WebServer:war exploded">
           <settings>
@@ -744,7 +813,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Tomcat_9_0_0_M1_WebServer_2" />
-        <option name="HTTP_PORT" value="3053" />
+        <option name="HTTP_PORT" value="3063" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -827,12 +896,12 @@
       <option name="presentableId" value="Default" />
       <updated>1491897626923</updated>
       <workItem from="1491897642639" duration="9858000" />
-      <workItem from="1491910787417" duration="7034000" />
+      <workItem from="1491910787417" duration="10553000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16892000" />
+    <option name="totallyTimeSpent" value="20411000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -950,14 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
-          <caret line="118" column="23" lean-forward="false" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1196,34 +1257,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
+    <entry file="file://$PROJECT_DIR$/web/Change.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="34" column="21" lean-forward="true" selection-start-line="31" selection-start-column="12" selection-end-line="34" selection-end-column="21" />
+        <state relative-caret-position="238">
+          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="15" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="119" column="19" lean-forward="true" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/Forgot.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="35" column="26" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="26" />
+        <state relative-caret-position="255">
+          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/Change.html">
+    <entry file="file://$PROJECT_DIR$/web/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="39" column="98" lean-forward="false" selection-start-line="39" selection-start-column="98" selection-end-line="39" selection-end-column="98" />
+        <state relative-caret-position="493">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/Shoppinglists.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="27" column="42" lean-forward="false" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Servlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="89" column="59" lean-forward="false" selection-start-line="89" selection-start-column="59" selection-end-line="89" selection-end-column="59" />
+        <state relative-caret-position="1490">
+          <caret line="103" column="16" lean-forward="true" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
