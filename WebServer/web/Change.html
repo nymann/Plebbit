@@ -20,9 +20,9 @@
         <!--Menu stuff here-->
         <ul>
             <li><a href="#">SHOPPING LISTS</a></li>
-            <li><a href="#">SHOPPING LISTS</a></li>
-            <li><a href="#">SHOPPING LISTS</a></li>
-            <li><a href="#">SHOPPING LISTS</a></li>
+            <li><a href="#">FIND FRIENDS</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">ACCOUNT</a></li>
         </ul>
     </nav>
 
@@ -33,6 +33,15 @@
 
         <div id="mid">
             <!--Change password form-->
+            <div id="login">
+                <form action="Servlet" class="login-form" method="post">
+                    <input type="text" name="username" placeholder="username" id="username"/>
+                    <input type="password" name="password" placeholder="password" id="password"/>
+                    <input type="password" name="new-password" placeholder="new password" id="new-password"/>
+                    <input type="password" name="new-password-again" placeholder="new password" id="new-password-again"/>
+                    <input type="submit" value="Change password" id="password-button">
+                </form>
+            </div>
         </div>
 
         <div id="right">
