@@ -43,6 +43,8 @@ public class Servlet extends HttpServlet {
              * Change password
              */
 
+            //iPlebbit.forgotPassword(
+
             String newPassword = request.getParameter("new-password");
             String newPasswordAgain = request.getParameter("new-password-again");
 
