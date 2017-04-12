@@ -336,6 +336,44 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 		return true;
 	}
 
+	@Override
+	public boolean updateTimeOnToken(String token) {
+		return this.updateTime(getIdFromUsername(getUsernameFromToken(token)));
+	}
+	@Override
+	public String getTimeOnToken(String token) {
+		String time = "";
+		String sqlQuery = "select * from users where token = '"+token+"';";
+		ResultSet set;
+		try {
+			set = DatabaseConnector.queryInDatabase(sqlQuery);
+			if(set.next()){
+				time = set.getString(4);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return time;
+	}
+
+	@Override
+	public String getTimeOnUsername(String username) {
+		String time = "";
+		String sqlQuery = "select * from users where username = '"+username+"';";
+		ResultSet set;
+		try {
+			set = DatabaseConnector.queryInDatabase(sqlQuery);
+			if(set.next()){
+				time = set.getString(4);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return time;
+	}
+
 	
 
 }

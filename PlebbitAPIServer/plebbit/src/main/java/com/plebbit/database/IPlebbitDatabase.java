@@ -37,4 +37,10 @@ public interface IPlebbitDatabase {
 	public boolean addItem(String itemName, int listId, int userId);
 	
 	public boolean removeItem(String itemName, int listId, int userId);
+	
+	public boolean updateTimeOnToken(String token);
+	
+	public String getTimeOnToken(String token);
+	
+	public String getTimeOnUsername(String username);
 }

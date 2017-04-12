@@ -86,6 +86,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return null;
 		}
+		PlebbitDatabase.db.updateTimeOnToken(token);
 		return PlebbitDatabase.db.getListsForUser(PlebbitDatabase.db.getUsernameFromToken(token));
 	}
 
@@ -94,6 +95,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return null;
 		}
+		PlebbitDatabase.db.updateTimeOnToken(token);
 		return PlebbitDatabase.db.getList(id);
 	}
 
@@ -102,6 +104,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
+		PlebbitDatabase.db.updateTimeOnToken(token);
 		return PlebbitDatabase.db.addUserToList(inviteUserName, listId);
 	}
 
@@ -110,6 +113,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return;
 		}
+		PlebbitDatabase.db.updateTimeOnToken(token);
 		PlebbitDatabase.db.createList(listname, PlebbitDatabase.db.getUsernameFromToken(token));	
 		
 	}
@@ -119,6 +123,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
+		PlebbitDatabase.db.updateTimeOnToken(token);
 		return PlebbitDatabase.db.deleteList(token, listId);
 	}
 
@@ -127,6 +132,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return;
 		}
+		PlebbitDatabase.db.updateTimeOnToken(token);
 		PlebbitDatabase.db.addItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
 	}
 
@@ -135,6 +141,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
+		PlebbitDatabase.db.updateTimeOnToken(token);
 		return PlebbitDatabase.db.removeItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
 	}
 
