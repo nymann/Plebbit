@@ -188,8 +188,6 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 
 	@Override
 	public boolean tokenStillValid(String token) {
-		//return PlebbitDatabase.db.isValidToken(token);
-		
 		int[] returned = getListOfUser(token);
 		if(returned != null){
 			return true;

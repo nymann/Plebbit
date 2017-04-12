@@ -35,10 +35,11 @@ public class TestMain {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		String token = spil.login("s144827", "kek");
+		String token = spil.login("s144833", "kek");
 		if(!db.userExists("s144827")){
 			System.out.println("Failed creating user from login...");
 		}
+		spil.createNewList(token, "wtffffffff");
 		System.out.println(spil.tokenStillValid(token));
 		/*
 		System.out.println("Token received back: "+token);
