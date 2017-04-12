@@ -1,5 +1,13 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Nymann
+  Date: 12/04/2017
+  Time: 15:19
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:jsp="http://java.sun.com/JSP/Page">
 <head>
     <meta charset="UTF-8">
     <title>Plebbit.dk | Forgot Password</title>
@@ -12,20 +20,19 @@
 <div id="wrap">
     <header>
         <div id="logo">
-            <img src="img/plebbit.png" alt="Plebbit" id="logopic">
-            <h1>Plebbit</h1>
+            <a href="index.jsp"><img src="img/plebbit.png" alt="Plebbit" id="logopic"></a>
+            <h1><a href="index.jsp">Plebbit</a></h1>
         </div>
     </header>
 
-    <nav>
-        <!--Menu stuff here-->
-        <ul>
-            <li><a href="#">SHOPPING LISTS</a></li>
-            <li><a href="#">FIND FRIENDS</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">ACCOUNT</a></li>
-        </ul>
-    </nav>
+    <div id="navwrap">
+        <nav>
+            <!--Menu stuff here-->
+            <ul>
+                <li><a href="about.jsp">ABOUT</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <div id="content">
         <div id="left">
@@ -36,7 +43,7 @@
             <!--Forgot password form-->
             <div id="login">
                 <form action="Servlet" class="login-form" method="post">
-                    <input type="text" name="username" placeholder="username" id="username" autofocus="autofocus"/>
+                    <input type="text" name="forgot-password" placeholder="username" id="username" autofocus="autofocus"/>
                     <input type="submit" value="send" id="forgot-button">
                 </form>
             </div>
@@ -48,7 +55,7 @@
     </div>
 
     <footer>
-        <h4>©Plebbit.dk</h4>
+        <h4><a href="index.jsp">©Plebbit.dk</a></h4>
     </footer>
 
 </div>
