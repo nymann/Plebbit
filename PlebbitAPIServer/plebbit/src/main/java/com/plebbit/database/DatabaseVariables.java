@@ -9,5 +9,5 @@ public class DatabaseVariables {
 	 
 	 protected static final String DATABASE_ROOT_USERNAME = "root"; 
 	 
-	 protected static final String DATABASE_ROOT_PASSWORD = "";
+	 protected static final String DATABASE_ROOT_PASSWORD = "thereisnospoon";
 }

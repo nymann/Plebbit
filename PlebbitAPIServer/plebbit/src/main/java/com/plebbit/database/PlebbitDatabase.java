@@ -75,12 +75,21 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	public boolean createList(String listname, String username) {
 		String sqlQuery = "INSERT INTO lists (listname) VALUES('"+listname+"');";
 		try {
-			int num = DatabaseConnector.updateInDatabase(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+			DatabaseConnector.updateInDatabase(sqlQuery);
+			String sqlQueryGetId = "select * from lists where listname = '"+listname+"';";
+			ResultSet idSet = DatabaseConnector.queryInDatabase(sqlQueryGetId);
+			int num = 0;
+			while(idSet.next()){
+				num = idSet.getInt(1);
+			}
 			String sqlQueryTwo = "select * from users where username = '"+username+"';";
 			ResultSet set = DatabaseConnector.queryInDatabase(sqlQueryTwo);
 			int id = 0;
+			
 			if(set.next()){
 				id = set.getInt(1);
+			} else{
+				return false;
 			}
 			String sqlQueryThree = "INSERT INTO listmembers (listid, userid) VALUES("+num+","+id+");";
 			DatabaseConnector.updateInDatabase(sqlQueryThree);
@@ -150,7 +159,6 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 				}
 				prop.items.add(item);
 			}
-			System.out.println("Just before return: len: "+prop.users.size());
 			return prop;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -294,7 +302,6 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	@Override
 	public boolean addItem(String itemName, int listId, int userId) {
 		ListProperties lp = PlebbitDatabase.db.getList(listId);
-		System.out.println("ADDITEM: LEN : "+lp.users.size());
 		boolean exists = false;
 		for(int i = 0; i < lp.users.size(); i++){
 			if(lp.users.get(i).userId == userId){
