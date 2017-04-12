@@ -8,6 +8,7 @@ import com.plebbit.dto.ListProperties;
 @WebService
 public interface IPlebbit {
     /**
+     *
      * @param username
      * @param password
      * @return token which will be used to confirm name
@@ -22,27 +23,30 @@ public interface IPlebbit {
     void changePassword(String username, String oldPassword, String newPassword);
 
     @WebMethod
-    int[] getListOfUser(String token); // Get shopping lists of the specified user.
+    int[] getListOfUser(String token);
 
     @WebMethod
-    ListProperties getListFromId(int id, String token); // Given the ID of a shopping list and a token id of a user, return the shopping list.
+    ListProperties getListFromId(int id, String token);
 
     @WebMethod
     boolean addUserToList(int listId, String token, String inviteUserName);
 
     @WebMethod
-    void createNewList(String token, String listname);
+    boolean createNewList(String token, String listname);
 
     @WebMethod
     boolean deleteList(String token, int listId);
 
     @WebMethod
-    void addItemToList(String token, String item, int listId);
+    boolean addItemToList(String token, String item, int listId);
 
     @WebMethod
     boolean removeItemFromList(String token, String item, int listId);
 
     @WebMethod
     void logout(String token);
+
+    @WebMethod
+    boolean tokenStillValid(String token);
 
 }
