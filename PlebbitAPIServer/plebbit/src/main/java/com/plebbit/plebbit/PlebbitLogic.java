@@ -86,6 +86,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return null;
 		}
+		String token = PlebbitDatabase.db.getTimeOnToken(token);
 		PlebbitDatabase.db.updateTimeOnToken(token);
 		return PlebbitDatabase.db.getListsForUser(PlebbitDatabase.db.getUsernameFromToken(token));
 	}

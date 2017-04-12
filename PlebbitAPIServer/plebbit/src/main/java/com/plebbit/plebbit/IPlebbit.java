@@ -35,4 +35,6 @@ public interface IPlebbit {
 	
 	@WebMethod public void logout(String token);
 	
+	@WebMethod public boolean tokenStillValid(String token);
+	
 }
