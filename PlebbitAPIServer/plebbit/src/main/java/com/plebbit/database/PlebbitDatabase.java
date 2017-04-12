@@ -113,6 +113,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 		ListProperties prop = new ListProperties();
 		prop.users = new ArrayList<User>();
 		prop.items = new ArrayList<Item>();
+		prop.listId = listNr;
 		String sqlQuery = "select * from lists where listid = "+listNr+";";
 		try {
 			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
@@ -149,6 +150,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 				}
 				prop.items.add(item);
 			}
+			System.out.println("Just before return: len: "+prop.users.size());
 			return prop;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -270,9 +272,11 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	public boolean deleteList(String token, int listId) {
 		ListProperties lp = PlebbitDatabase.db.getList(listId);
 		if(lp.users.size() > 0){
-			if(lp.users.get(0).token == token){
+			if(lp.users.get(0).token.equals(token)){
 				//Is owner
 				try {
+					String sqlUpdateItems = "delete from items where listid ="+listId+";";
+					DatabaseConnector.updateInDatabase(sqlUpdateItems);
 					String sqlUpdate = "delete from listmembers where listid = "+listId+";";
 					DatabaseConnector.updateInDatabase(sqlUpdate);
 					String sqlUpdate2 = "delete from lists where listid = "+listId+";";
@@ -290,6 +294,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	@Override
 	public boolean addItem(String itemName, int listId, int userId) {
 		ListProperties lp = PlebbitDatabase.db.getList(listId);
+		System.out.println("ADDITEM: LEN : "+lp.users.size());
 		boolean exists = false;
 		for(int i = 0; i < lp.users.size(); i++){
 			if(lp.users.get(i).userId == userId){

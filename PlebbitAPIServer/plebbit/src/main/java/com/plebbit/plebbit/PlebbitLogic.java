@@ -19,7 +19,7 @@ import brugerautorisation.transport.soap.Brugeradmin;
 @WebService(endpointInterface = "com.plebbit.plebbit.IPlebbit")
 public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 
-	protected PlebbitLogic() throws RemoteException {
+	public PlebbitLogic() throws RemoteException {
 		super();
 	}
 
@@ -37,15 +37,14 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		}
 		try{
 			ba.hentBruger(username, password);
-			PlebbitDatabase base = new PlebbitDatabase();
-			if(!base.userExists(username)){
-				base.createUser(username);
+			if(!PlebbitDatabase.db.userExists(username)){
+				PlebbitDatabase.db.createUser(username);
 			}
 			Random rand = new Random();
 			int num = rand.nextInt(1000);
 			String token = System.nanoTime()+""+num;
-			base.updateToken(username, token);
-			base.updateTime(username);
+			PlebbitDatabase.db.updateToken(username, token);
+			PlebbitDatabase.db.updateTime(username);
 			return token;
 			
 		} catch(IllegalArgumentException e){
