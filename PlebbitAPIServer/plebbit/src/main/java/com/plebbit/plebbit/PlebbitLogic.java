@@ -13,6 +13,7 @@ import javax.xml.ws.Service;
 import com.plebbit.database.DatabaseConnector;
 import com.plebbit.database.PlebbitDatabase;
 import com.plebbit.dto.ListProperties;
+import com.plebbit.helpers.TimeTools;
 
 import brugerautorisation.transport.soap.Brugeradmin;
 
@@ -86,7 +87,11 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return null;
 		}
-		String token = PlebbitDatabase.db.getTimeOnToken(token);
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			logout(token);
+			return null;
+		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
 		return PlebbitDatabase.db.getListsForUser(PlebbitDatabase.db.getUsernameFromToken(token));
 	}
@@ -94,6 +99,11 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 	@Override
 	public ListProperties getListFromId(int id, String token) {
 		if(!PlebbitDatabase.db.isValidToken(token)){
+			return null;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			logout(token);
 			return null;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
@@ -105,17 +115,27 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			logout(token);
+			return false;
+		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
 		return PlebbitDatabase.db.addUserToList(inviteUserName, listId);
 	}
 
 	@Override
-	public void createNewList(String token, String listname) {
+	public boolean createNewList(String token, String listname) {
 		if(!PlebbitDatabase.db.isValidToken(token)){
-			return;
+			return false;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			logout(token);
+			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		PlebbitDatabase.db.createList(listname, PlebbitDatabase.db.getUsernameFromToken(token));	
+		return PlebbitDatabase.db.createList(listname, PlebbitDatabase.db.getUsernameFromToken(token));	
 		
 	}
 
@@ -124,22 +144,37 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			logout(token);
+			return false;
+		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
 		return PlebbitDatabase.db.deleteList(token, listId);
 	}
 
 	@Override
-	public void addItemToList(String token, String item, int listId) {
+	public boolean addItemToList(String token, String item, int listId) {
 		if(!PlebbitDatabase.db.isValidToken(token)){
-			return;
+			return false;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			logout(token);
+			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		PlebbitDatabase.db.addItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
+		return PlebbitDatabase.db.addItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
 	}
 
 	@Override
 	public boolean removeItemFromList(String token, String item, int listId) {
 		if(!PlebbitDatabase.db.isValidToken(token)){
+			return false;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			logout(token);
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
@@ -149,5 +184,14 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 	@Override
 	public void logout(String token) {
 		PlebbitDatabase.db.updateToken(PlebbitDatabase.db.getUsernameFromToken(token), "");
+	}
+
+	@Override
+	public boolean tokenStillValid(String token) {
+		int[] returned = getListOfUser(token);
+		if(returned != null){
+			return true;
+		}
+		return false;
 	}
 }

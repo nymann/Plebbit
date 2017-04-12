@@ -25,11 +25,11 @@ public interface IPlebbit {
 	
 	@WebMethod public boolean addUserToList(int listId, String token, String inviteUserName);
 	
-	@WebMethod public void createNewList(String token, String listname);
+	@WebMethod public boolean createNewList(String token, String listname);
 	
 	@WebMethod public boolean deleteList(String token, int listId);
 	
-	@WebMethod public void addItemToList(String token, String item, int listId);
+	@WebMethod public boolean addItemToList(String token, String item, int listId);
 	
 	@WebMethod public boolean removeItemFromList(String token, String item, int listId);
 	
