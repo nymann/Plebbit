@@ -10,7 +10,7 @@ public class TimeTools {
 		}
 		long curTime = System.nanoTime();
 		long oldTime = Long.parseLong(time);
-		if(oldTime + EXPIRED_TIME_NANO < curTime){
+		if((oldTime + EXPIRED_TIME_NANO) < curTime){
 			return true;
 		}
 		return false;

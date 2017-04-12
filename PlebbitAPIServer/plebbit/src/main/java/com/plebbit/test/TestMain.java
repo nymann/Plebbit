@@ -39,6 +39,8 @@ public class TestMain {
 		if(!db.userExists("s144827")){
 			System.out.println("Failed creating user from login...");
 		}
+		System.out.println(spil.tokenStillValid(token));
+		/*
 		System.out.println("Token received back: "+token);
 		String token2 = spil.login("s144833", "kek");
 		if(!db.userExists("s144833")){
@@ -66,6 +68,7 @@ public class TestMain {
 			}
 		}
 		spil.deleteList(token, idWithTest);
+		*/
 		System.exit(1);
 	}
 
