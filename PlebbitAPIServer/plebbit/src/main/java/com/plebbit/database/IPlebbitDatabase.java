@@ -43,4 +43,10 @@ public interface IPlebbitDatabase {
 	public String getTimeOnToken(String token);
 	
 	public String getTimeOnUsername(String username);
+	
+	public String getListLastChanged(int listid);
+	
+	public boolean updateListLastChanged(int listid);
+	
+	public boolean renameListName(int listid, String newname);
 }

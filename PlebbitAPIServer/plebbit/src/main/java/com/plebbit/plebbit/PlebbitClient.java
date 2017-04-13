@@ -157,7 +157,7 @@ public class PlebbitClient {
         				System.out.print("Type item to add: ");
         				String item = scanner.nextLine();
         				if(item.length() == 0 || item.isEmpty()){
-        					System.out.println("Invalid username");
+        					System.out.println("Invalid itemname");
         					break;
         				}
         				System.out.print("Type id of list: ");
