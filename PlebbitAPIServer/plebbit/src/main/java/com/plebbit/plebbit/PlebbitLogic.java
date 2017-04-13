@@ -14,6 +14,7 @@ import com.plebbit.database.DatabaseConnector;
 import com.plebbit.database.PlebbitDatabase;
 import com.plebbit.dto.ListProperties;
 import com.plebbit.helpers.TimeTools;
+import com.plebbit.helpers.WriteSomething;
 
 import brugerautorisation.transport.soap.Brugeradmin;
 
@@ -46,6 +47,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			String token = System.nanoTime()+""+num;
 			PlebbitDatabase.db.updateToken(username, token);
 			PlebbitDatabase.db.updateTime(username);
+			WriteSomething.writeInFile(WriteSomething.location, "User "+username+" logged in!");
 			return token;
 			
 		} catch(IllegalArgumentException e){
@@ -63,6 +65,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			Service service = Service.create(url, qname);
 			ba = service.getPort(Brugeradmin.class);
 			ba.sendGlemtAdgangskodeEmail(username, "Sent from plebbit server");
+			WriteSomething.writeInFile(WriteSomething.location, username+" request new password.");
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -77,7 +80,8 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			Service service = Service.create(url, qname);
 			ba = service.getPort(Brugeradmin.class);
 			ba.ændrAdgangskode(username, oldPassword, newPassword);
-		} catch (MalformedURLException e1) {
+			WriteSomething.writeInFile(WriteSomething.location, username+" changed password!");
+		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 	}
@@ -93,6 +97,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			return null;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" requested list from user.");
 		return PlebbitDatabase.db.getListsForUser(PlebbitDatabase.db.getUsernameFromToken(token));
 	}
 
@@ -107,6 +112,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			return null;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" requested list from id "+id);
 		return PlebbitDatabase.db.getList(id);
 	}
 
@@ -123,22 +129,22 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		PlebbitDatabase.db.updateTimeOnToken(token);
 		boolean bool = PlebbitDatabase.db.addUserToList(inviteUserName, listId);
 		PlebbitDatabase.db.updateListLastChanged(listId);
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" added user "+inviteUserName+" to list with id "+listId);
 		return bool;
 	}
 
 	@Override
 	public boolean createNewList(String token, String listname) {
 		if(!PlebbitDatabase.db.isValidToken(token)){
-			System.out.println("WUTFL");
 			return false;
 		}
 		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
 		if(TimeTools.isExpired(loadedTime)){
 			logout(token);
-			System.out.println("YEOKINICEGAMEJAMFELX");
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" added a new list "+listname);
 		return PlebbitDatabase.db.createList(listname, PlebbitDatabase.db.getUsernameFromToken(token));	
 		
 	}
@@ -154,6 +160,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" deleted a list with id "+listId);
 		return PlebbitDatabase.db.deleteList(token, listId);
 	}
 
@@ -170,6 +177,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		PlebbitDatabase.db.updateTimeOnToken(token);
 		boolean bool = PlebbitDatabase.db.addItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
 		PlebbitDatabase.db.updateListLastChanged(listId);
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" added item "+item+" to list with id "+listId);
 		return bool;
 	}
 
@@ -186,11 +194,13 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		PlebbitDatabase.db.updateTimeOnToken(token);
 		boolean bool = PlebbitDatabase.db.removeItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
 		PlebbitDatabase.db.updateListLastChanged(listId);
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" removed item "+item+" from list with id "+listId);
 		return bool;
 	}
 
 	@Override
 	public void logout(String token) {
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" logged out.");
 		PlebbitDatabase.db.updateToken(PlebbitDatabase.db.getUsernameFromToken(token), "");
 	}
 
