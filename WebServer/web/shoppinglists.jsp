@@ -93,11 +93,18 @@
                         else {
                             innerHtmlContent += "<tr><td>no items added</td><td></td></tr>";
                         }
+                        out.print("<br />");
                         out.println("<script>\n" +
-                                "                function myFunction" + shoppingList.listId + "() {\n" +
-                                "                    document.getElementById(\"" + shoppingList.listId + "\").innerHTML = \"" + innerHtmlContent + "\";" +
-                                "                }\n" +
-                                "            </script>");
+                                "var n = 0;\n" +
+                                "function myFunction" + shoppingList.listId + "() {\n" +
+                                "if(n%2==0){" +
+                                "document.getElementById(\"" + shoppingList.listId + "\").innerHTML = \"" + innerHtmlContent + "\";" +
+                                "} else {" +
+                                "    document.getElementById(\"" + shoppingList.listId + "\").innerHTML = \"\";" +
+                                "}" +
+                                "n++;" +
+                                "}\n" +
+                                "</script>");
                     }
                 }
             %>
