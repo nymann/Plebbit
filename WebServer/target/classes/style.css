@@ -94,13 +94,18 @@ nav > ul > li > a {
 }
 
 table {
+    border: 1px solid #9cc;
     border-collapse: collapse;
     margin: 0 auto;
     width: 80%;
+    border-top-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    border-bottom-style: dotted;
 }
 
 td, th {
-    border: 1px solid #9cc;
+
     padding: 0.5rem;
     text-align: center;
     width: 50%;
@@ -109,10 +114,8 @@ td, th {
 #shoppinglist {
     padding: 30px;
     margin: 0 auto;
-
     width: 80%;
     height: 100%;
-
 }
 
 #left {

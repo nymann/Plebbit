@@ -49,4 +49,7 @@ public interface IPlebbit {
     @WebMethod
     boolean tokenStillValid(String token);
 
+    @WebMethod
+    int getPassedSecondsSinceLastChange(int listid);
+
 }
