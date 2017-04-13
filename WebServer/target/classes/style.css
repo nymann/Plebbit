@@ -100,9 +100,10 @@ table {
 }
 
 td, th {
-    border-bottom: 3px solid #9cc;
+    border: 1px solid #9cc;
     padding: 0.5rem;
-    text-align: left;
+    text-align: center;
+    width: 50%;
 }
 
 #shoppinglist {
@@ -110,7 +111,7 @@ td, th {
     margin: 0 auto;
 
     width: 80%;
-    height: 200px;
+    height: 100%;
 
 }
 

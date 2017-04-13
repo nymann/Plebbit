@@ -40,8 +40,8 @@ public class Servlet extends HttpServlet {
             /*
              * Forgot password
              */
-
-            iPlebbit.forgotPassword("forgot-password");
+            String username = request.getParameter("forgot-password");
+            iPlebbit.forgotPassword(username);
             response.sendRedirect("emailsent.jsp");
         }
 
@@ -72,8 +72,6 @@ public class Servlet extends HttpServlet {
                 } else {
                     request.getRequestDispatcher("change.jsp").forward(request, response);
                 }
-
-
             }
         }
 
@@ -87,7 +85,6 @@ public class Servlet extends HttpServlet {
 
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-
             if (login(username, password)) {
                 // Forward to the new page.
                 response.sendRedirect("index.jsp");
@@ -98,7 +95,6 @@ public class Servlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(request.getRequestURI());
         String currentPage = request.getRequestURI();
         request.setAttribute("loggedIn", isUserLoggedIn());
 
@@ -116,33 +112,23 @@ public class Servlet extends HttpServlet {
                         temp.add(iPlebbit.getListFromId(id, tokenId));
                     }
 
-                    //ListProperties[] shoppingLists = (ListProperties[]) temp.toArray();
-
-                    //request.setAttribute("shoppingLists", shoppingLists);
                     request.setAttribute("shoppingLists", temp.toArray(new ListProperties[temp.size()]));
                 }
 
                 break;
 
             case "/index.jsp":
-                request.setAttribute("loggedIn", isUserLoggedIn());
+                /*request.setAttribute("loggedIn", isUserLoggedIn());*/
                 break;
 
             case "/":
-                request.setAttribute("loggedIn", isUserLoggedIn());
+                /*request.setAttribute("loggedIn", isUserLoggedIn());*/
                 break;
 
             case "/logout.jsp":
                 iPlebbit.logout(tokenId);
-                request.setAttribute("loggedIn", /*isUserLoggedIn()*/ false);
-                break;
-
-            case "/forgot.jsp":
                 request.setAttribute("loggedIn", isUserLoggedIn());
                 break;
-
-            case "/change.jsp":
-                request.setAttribute("loggedIn", isUserLoggedIn());
         }
     }
 

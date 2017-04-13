@@ -1,5 +1,6 @@
 <%@ page import="com.plebbit.dto.ListProperties" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.plebbit.dto.Item" %><%--
   Created by IntelliJ IDEA.
   User: Nymann
   Date: 11/04/2017
@@ -37,8 +38,7 @@
                         out.println("\t\t<li><a href=\"shoppinglists.jsp\">SHOPPING LISTS</a></li>");
                         out.println("\t\t<li><a href=\"about.jsp\">ABOUT</a></li>");
                         out.println("\t\t<li><a href=\"logout.jsp\">LOGOUT</a></li>");
-                    }
-                    else {
+                    } else {
                         out.print("<li><a href=\"about.jsp\">ABOUT</a></li>");
                     }
                 %>
@@ -48,40 +48,60 @@
 
     <div id="content">
         <div id="shoppinglist">
-        <!--Change password form-->
-        <%
-            if (!loggedIn) {
-                out.println("<h2>You are not logged in!</h2>");
-                return;
-            }
-
-            ListProperties[] shoppingLists = (ListProperties[]) request.getAttribute("shoppingLists");
-
-            if (shoppingLists.length < 1) {
-                out.println("<h2>You don't have any shopping lists yet.</h2>");
-            } else {
-                out.println("<table>");
-                out.println("<tr>");
-                out.println("<th>List name</th>");
-                out.println("<th>No. of Items</th>");
-                /*out.println("<th>Latest change</th>");*/
-                out.println("</tr>");
-                for (ListProperties shoppingList : shoppingLists) {
-                    out.println("<tr>");
-                    out.println("<td>" + shoppingList.nameOfList + "</td>");
-                    int itemsInList;
-                    if (shoppingList.items == null) {
-                        itemsInList = 0;
-                    }
-                    else {
-                        itemsInList = shoppingList.items.size();
-                    }
-                    out.println("<td>" + itemsInList + "</td>");
-                    out.println("</tr>");
+            <%
+                if (!loggedIn) {
+                    out.println("<h2>You are not logged in!</h2>");
+                    return;
                 }
-                out.println("</table>");
-            }
-        %>
+
+                ListProperties[] shoppingLists = (ListProperties[]) request.getAttribute("shoppingLists");
+
+                if (shoppingLists.length < 1) {
+                    out.println("<h2>You don't have any shopping lists yet.</h2>");
+                } else {
+                    out.println("<table>");
+                    out.println("<tr>");
+                    out.println("<th>List name</th>");
+                    out.println("<th>No. of Items</th>");
+                    /*out.println("<th>Changed</th>");*/
+                    out.println("</tr>");
+                    out.println("</table>");
+                    for (ListProperties shoppingList : shoppingLists) {
+                        out.println("<table>");
+                        out.println("<tr>");
+                        out.println("<td><button onclick=\"myFunction" + shoppingList.listId + "()\">" + shoppingList.nameOfList + "</button></td>");
+
+                        int itemsInList;
+                        if (shoppingList.items == null) {
+                            itemsInList = 0;
+                        } else {
+                            itemsInList = shoppingList.items.size();
+                        }
+                        out.println("<td>" + itemsInList + "</td>");
+                        out.println("</tr>");
+                        out.println("</table>");
+                        out.println("<table id=\"" + shoppingList.listId + "\"></table>");
+                        //String innerHtmlContent = "<th>Item</th><th>User</th>\n";
+
+                        String innerHtmlContent = "<tr><th>Item</th><th>User</th></tr>";
+                        if (shoppingList.items != null) {
+                            for (Item item : shoppingList.items) {
+                                innerHtmlContent += "<tr><td>" + item.name + "</td><td>" + item.user.name + "</td></tr>";
+                                //innerHtmlContent += "Name:" + item.name + ", User:" + item.user + "\n";
+                            }
+                        }
+                        else {
+                            innerHtmlContent += "<tr><td>no items added</td><td></td></tr>";
+                        }
+                        out.println("<script>\n" +
+                                "                function myFunction" + shoppingList.listId + "() {\n" +
+                                "                    document.getElementById(\"" + shoppingList.listId + "\").innerHTML = \"" + innerHtmlContent + "\";" +
+                                "                }\n" +
+                                "            </script>");
+                    }
+                }
+            %>
+
         </div>
     </div>
     <footer>
