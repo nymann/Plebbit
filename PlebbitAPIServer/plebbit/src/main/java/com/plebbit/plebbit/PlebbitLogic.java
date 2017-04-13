@@ -63,7 +63,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			Service service = Service.create(url, qname);
 			ba = service.getPort(Brugeradmin.class);
 			ba.sendGlemtAdgangskodeEmail(username, "Sent from plebbit server");
-		} catch (MalformedURLException e1) {
+		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 	}
@@ -121,17 +121,21 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		return PlebbitDatabase.db.addUserToList(inviteUserName, listId);
+		boolean bool = PlebbitDatabase.db.addUserToList(inviteUserName, listId);
+		PlebbitDatabase.db.updateListLastChanged(listId);
+		return bool;
 	}
 
 	@Override
 	public boolean createNewList(String token, String listname) {
 		if(!PlebbitDatabase.db.isValidToken(token)){
+			System.out.println("WUTFL");
 			return false;
 		}
 		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
 		if(TimeTools.isExpired(loadedTime)){
 			logout(token);
+			System.out.println("YEOKINICEGAMEJAMFELX");
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
@@ -164,7 +168,9 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		return PlebbitDatabase.db.addItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
+		boolean bool = PlebbitDatabase.db.addItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
+		PlebbitDatabase.db.updateListLastChanged(listId);
+		return bool;
 	}
 
 	@Override
@@ -178,7 +184,9 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		return PlebbitDatabase.db.removeItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
+		boolean bool = PlebbitDatabase.db.removeItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
+		PlebbitDatabase.db.updateListLastChanged(listId);
+		return bool;
 	}
 
 	@Override
@@ -188,10 +196,23 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 
 	@Override
 	public boolean tokenStillValid(String token) {
+		if(token.isEmpty() || token.equals("")){
+			return false;
+		}
 		int[] returned = getListOfUser(token);
 		if(returned != null){
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public int getPassedSecondsSinceLastChange(int listid) {
+		String str = PlebbitDatabase.db.getListLastChanged(listid);
+		long convertedStr = Long.parseLong(str);
+		long cur = System.nanoTime();
+		long diff = cur - convertedStr;
+		int secs = (int)(diff / 1000000000L);
+		return secs;
 	}
 }

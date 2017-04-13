@@ -25,7 +25,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 		
 		ResultSet listsTable = databaseMeta.getTables(null, null, "lists", null);
 		if (!listsTable.next()) {
-			String sqlQuery = "CREATE TABLE lists (listid INTEGER NOT NULL AUTO_INCREMENT, listname VARCHAR(30) NOT NULL, PRIMARY KEY (listid));";
+			String sqlQuery = "CREATE TABLE lists (listid INTEGER NOT NULL AUTO_INCREMENT, listname VARCHAR(30) NOT NULL, lastchanged VARCHAR(50) NOT NULL, PRIMARY KEY (listid));";
 			DatabaseConnector.updateInDatabase(sqlQuery);
 		}
 		
@@ -73,7 +73,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean createList(String listname, String username) {
-		String sqlQuery = "INSERT INTO lists (listname) VALUES('"+listname+"');";
+		String sqlQuery = "INSERT INTO lists (listname, lastChanged) VALUES('"+listname+"','"+System.nanoTime()+"');";
 		try {
 			DatabaseConnector.updateInDatabase(sqlQuery);
 			String sqlQueryGetId = "select * from lists where listname = '"+listname+"';";
@@ -93,6 +93,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 			}
 			String sqlQueryThree = "INSERT INTO listmembers (listid, userid) VALUES("+num+","+id+");";
 			DatabaseConnector.updateInDatabase(sqlQueryThree);
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -379,6 +380,46 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 			e.printStackTrace();
 		}
 		return time;
+	}
+
+	@Override
+	public String getListLastChanged(int listid) {
+		String sqlQuery = "select * from lists where listid = "+listid+";";
+		ResultSet set;
+		try {
+			set = DatabaseConnector.queryInDatabase(sqlQuery);
+			if(set.next()){
+				return set.getString(3);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	@Override
+	public boolean updateListLastChanged(int listid) {
+		String sqlUpdate = "update lists set lastchanged = '"+System.nanoTime()+"' where listid = "+listid+";";
+		try {
+			DatabaseConnector.updateInDatabase(sqlUpdate);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean renameListName(int listid, String newname) {
+		String sqlUpdate = "update lists set listname = '"+newname+"' where listid = "+listid+";";
+		try {
+			DatabaseConnector.updateInDatabase(sqlUpdate);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	
