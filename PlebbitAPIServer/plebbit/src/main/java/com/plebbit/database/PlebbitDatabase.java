@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.mysql.jdbc.Statement;
 import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
 import com.plebbit.dto.User;
@@ -484,5 +483,17 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean setItemName(int listId, String itemName, String newName) {
+		String sqlUpdate = "update items set itemname= "+newName+" where listid = "+listId+" and itemname='"+itemName+"';";
+		try {
+			DatabaseConnector.updateInDatabase(sqlUpdate);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

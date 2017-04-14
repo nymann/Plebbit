@@ -57,4 +57,6 @@ public interface IPlebbitDatabase {
 	public Item getItem(int listId, String itemName);
 	
 	public User getUserFromToken(String token);
+	
+	public boolean setItemName(int listId, String itemName, String newName);
 }

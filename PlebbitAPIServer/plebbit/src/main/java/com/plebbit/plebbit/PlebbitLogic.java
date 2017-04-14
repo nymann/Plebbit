@@ -360,4 +360,37 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			return null;
 		}
 	}
+
+	@Override
+	public boolean renameItemName(int listId, String itemName, String newItemName, String token) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method renameItemName with properties: token="+token+" itemName="+itemName+" listId="+listId);
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return false;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
+			logout(token);
+			return false;
+		}
+		int[] lists = getListOfUser(token);
+		boolean isPart = false;
+		for(int i = 0; i < lists.length; i++){
+			if(lists[i] == listId){
+				isPart = true;
+				break;
+			}
+		}
+		if(isPart){
+			if(PlebbitDatabase.db.setItemName(listId, itemName, newItemName)){
+				WriteSomething.writeInFile(WriteSomething.location, name+" renamed "+itemName+" to "+newItemName+" in list "+listId+".");
+			} else{
+				WriteSomething.writeInFile(WriteSomething.location, name+" failed to rename item in list "+listId+".");
+			}
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" is not part of list "+listId+".");
+		}
+		return false;
+	}
 }
