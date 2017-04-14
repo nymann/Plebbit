@@ -48,6 +48,7 @@
 
     <div id="content">
         <div id="shoppinglist">
+
             <%
                 if (!loggedIn) {
                     out.println("<h2>You are not logged in!</h2>");
@@ -55,57 +56,35 @@
                 }
 
                 ListProperties[] shoppingLists = (ListProperties[]) request.getAttribute("shoppingLists");
+                if (shoppingLists == null) {
+                    out.println("<h2>Are you even logged in?</h2>");
+                }
 
-                if (shoppingLists.length < 1) {
+                else if (shoppingLists.length < 1) {
                     out.println("<h2>You don't have any shopping lists yet.</h2>");
                 } else {
-                    out.println("<table>");
-                    out.println("<tr>");
-                    out.println("<th>List name</th>");
-                    out.println("<th>No. of Items</th>");
-                    /*out.println("<th>Changed</th>");*/
-                    out.println("</tr>");
-                    out.println("</table>");
+                    out.println("<table>\n" +
+                            "\t\t\t\t<tr>\n" +
+                            "\t\t\t\t\t<th>List name</th>\n" +
+                            "\t\t\t\t\t<th>No. of Items</th>\n" +
+                            "\t\t\t\t\t<th>Changed</th>\n" +
+                            "\t\t\t\t</tr>");
+
                     for (ListProperties shoppingList : shoppingLists) {
-                        out.println("<table>");
-                        out.println("<tr>");
-                        out.println("<td><button onclick=\"myFunction" + shoppingList.listId + "()\">" + shoppingList.nameOfList + "</button></td>");
-
-                        int itemsInList;
-                        if (shoppingList.items == null) {
-                            itemsInList = 0;
-                        } else {
-                            itemsInList = shoppingList.items.size();
+                        if (shoppingList == null) {
+                            continue;
                         }
-                        out.println("<td>" + itemsInList + "</td>");
-                        out.println("</tr>");
-                        out.println("</table>");
-                        out.println("<table id=\"" + shoppingList.listId + "\"></table>");
-                        //String innerHtmlContent = "<th>Item</th><th>User</th>\n";
-
-                        String innerHtmlContent = "<tr><th>Item</th><th>User</th></tr>";
-                        if (shoppingList.items != null) {
-                            for (Item item : shoppingList.items) {
-                                innerHtmlContent += "<tr><td>" + item.name + "</td><td>" + item.user.name + "</td></tr>";
-                                //innerHtmlContent += "Name:" + item.name + ", User:" + item.user + "\n";
-                            }
-                        }
-                        else {
-                            innerHtmlContent += "<tr><td>no items added</td><td></td></tr>";
-                        }
-                        out.print("<br />");
-                        out.println("<script>\n" +
-                                "var n = 0;\n" +
-                                "function myFunction" + shoppingList.listId + "() {\n" +
-                                "if(n%2==0){" +
-                                "document.getElementById(\"" + shoppingList.listId + "\").innerHTML = \"" + innerHtmlContent + "\";" +
-                                "} else {" +
-                                "    document.getElementById(\"" + shoppingList.listId + "\").innerHTML = \"\";" +
-                                "}" +
-                                "n++;" +
-                                "}\n" +
-                                "</script>");
+                        out.println("\t\t\t\t<tr>\n" +
+                                "\t\t\t\t\t<td>\n" +
+                                "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"get\">\n" +
+                                "\t\t\t\t\t\t\t<button name=\"shoppinglist\" type=\"submit\" value=\"" + shoppingList.listId + "\">" + shoppingList.nameOfList + "</button>\n" +
+                                "\t\t\t\t\t\t</form>\n" +
+                                "\t\t\t\t\t</td>\n" +
+                                "\t\t\t\t\t<td>2</td>\n" +
+                                "\t\t\t\t\t<td>5 min. ago</td>\n" +
+                                "\t\t\t\t</tr>");
                     }
+                    out.println("\t\t\t</table>");
                 }
             %>
 

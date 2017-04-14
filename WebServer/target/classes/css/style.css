@@ -87,41 +87,52 @@ nav > ul > li > a {
 
 #content {
     width: 75%;
-    min-height: 400px;
     background-color: #ecfbfb;
     color: #000;
     margin: 0 auto;
 }
 
 table {
+    margin: 0 auto;
+    width: 100%;
+}
+
+td, th {
     border: 1px solid #9cc;
     border-collapse: collapse;
-    margin: 0 auto;
-    width: 80%;
     border-top-style: hidden;
     border-left-style: hidden;
     border-right-style: hidden;
     border-bottom-style: dotted;
+
+    text-align: center;
+    max-width: 0px;
 }
 
-td, th {
-
-    padding: 0.5rem;
+#iteminlist, #listname {
+    font-family: 'Roboto', monospace;
+    text-decoration: none;
+    border: none;
+    background: none;
+    font-size: 1em;
     text-align: center;
-    width: 50%;
+    display: inline;
+}
+
+#listname {
+    font-family: 'Roboto', monospace;
+    font-size: x-large
 }
 
 #shoppinglist {
-    padding: 30px;
+    padding: 30px 0px 30px 0px;
     margin: 0 auto;
     width: 80%;
-    height: 100%;
 }
 
 #left {
     float: left;
     width: 302px;
-    height: 400px;
     margin: 0 0;
 }
 
@@ -129,14 +140,12 @@ td, th {
     overflow: hidden;
     display: inline-block;
     width: 301px;
-    height: 400px;
     margin: 0 0;
 }
 
 #right {
     float: right;
     width: 301px;
-    height: 400px;
     margin: 0 0;
 }
 
