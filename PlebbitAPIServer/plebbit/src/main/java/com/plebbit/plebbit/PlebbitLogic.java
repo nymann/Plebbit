@@ -12,7 +12,9 @@ import javax.xml.ws.Service;
 
 import com.plebbit.database.DatabaseConnector;
 import com.plebbit.database.PlebbitDatabase;
+import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
+import com.plebbit.dto.User;
 import com.plebbit.helpers.TimeTools;
 import com.plebbit.helpers.WriteSomething;
 
@@ -52,6 +54,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			
 		} catch(IllegalArgumentException e){
 			e.printStackTrace();
+			WriteSomething.writeInFile(WriteSomething.location, "User "+username+" failed to log in!");
 		}
 		return "";
 	}
@@ -68,6 +71,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			WriteSomething.writeInFile(WriteSomething.location, username+" request new password.");
 		} catch (Exception e1) {
 			e1.printStackTrace();
+			WriteSomething.writeInFile(WriteSomething.location, username+" failed to request new password.");
 		}
 	}
 
@@ -83,136 +87,198 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			WriteSomething.writeInFile(WriteSomething.location, username+" changed password!");
 		} catch (Exception e1) {
 			e1.printStackTrace();
+			WriteSomething.writeInFile(WriteSomething.location, username+" failed to change password!");
 		}
 	}
 
 	@Override
 	public int[] getListOfUser(String token) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method getListOfUser with properties: token="+token);
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return null;
 		}
 		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
 		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
 			logout(token);
 			return null;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" requested list from user.");
-		return PlebbitDatabase.db.getListsForUser(PlebbitDatabase.db.getUsernameFromToken(token));
+		WriteSomething.writeInFile(WriteSomething.location, name+" requested list from user.");
+		int[] returntype = PlebbitDatabase.db.getListsForUser(name);
+		if(returntype != null){
+			WriteSomething.writeInFile(WriteSomething.location, name+" got list for user.");
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" didnt get list for user.");
+		}
+		return returntype;
 	}
 
 	@Override
 	public ListProperties getListFromId(int id, String token) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method getListFromId with properties: id="+id+" token="+token);
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return null;
 		}
 		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
 		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
 			logout(token);
 			return null;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" requested list from id "+id);
-		return PlebbitDatabase.db.getList(id);
+		WriteSomething.writeInFile(WriteSomething.location, name+" requested list from id "+id);
+		ListProperties listToReturn = PlebbitDatabase.db.getList(id);;
+		if(listToReturn != null){
+			WriteSomething.writeInFile(WriteSomething.location, name+" finished request list from id "+id);
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" failed to get requested list from id "+id);
+		}
+		return listToReturn;
 	}
 
 	@Override
 	public boolean addUserToList(int listId, String token, String inviteUserName) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method addUserToList with properties: listId="+listId+" token="+token+" inviteUserName="+inviteUserName);
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
 		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
 		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
 			logout(token);
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
 		boolean bool = PlebbitDatabase.db.addUserToList(inviteUserName, listId);
 		PlebbitDatabase.db.updateListLastChanged(listId);
-		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" added user "+inviteUserName+" to list with id "+listId);
+		if(bool){
+			WriteSomething.writeInFile(WriteSomething.location, name+" added user "+inviteUserName+" to list with id "+listId);
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" failed to add user "+inviteUserName+" to list with id "+listId);
+		}
 		return bool;
 	}
 
 	@Override
 	public boolean createNewList(String token, String listname) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method createNewList with properties: token="+token+" listname="+listname);
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
 		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
 		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
 			logout(token);
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" added a new list "+listname);
-		return PlebbitDatabase.db.createList(listname, PlebbitDatabase.db.getUsernameFromToken(token));	
+		boolean bool = PlebbitDatabase.db.createList(listname, name);
+		if(bool){
+			WriteSomething.writeInFile(WriteSomething.location, name+" added a new list "+listname);
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" failed to add a new list "+listname);
+		}
+		return bool;
 		
 	}
 
 	@Override
 	public boolean deleteList(String token, int listId) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method deleteList with properties: token="+token+" listId="+listId);
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
 		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
 		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
 			logout(token);
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" deleted a list with id "+listId);
-		return PlebbitDatabase.db.deleteList(token, listId);
+		boolean bool = PlebbitDatabase.db.deleteList(token, listId);
+		if(bool){
+			WriteSomething.writeInFile(WriteSomething.location, name+" deleted a list with id "+listId);
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" failed to delete a list with id "+listId);
+		}
+		return bool;
 	}
 
 	@Override
 	public boolean addItemToList(String token, String item, int listId) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method addItemToList with properties: token="+token+" item="+item+" listId="+listId);
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
 		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
 		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
 			logout(token);
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		boolean bool = PlebbitDatabase.db.addItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
+		boolean bool = PlebbitDatabase.db.addItem(item, listId, PlebbitDatabase.db.getIdFromUsername(name));
 		PlebbitDatabase.db.updateListLastChanged(listId);
-		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" added item "+item+" to list with id "+listId);
+		if(bool){
+			WriteSomething.writeInFile(WriteSomething.location, name+" added item "+item+" to list with id "+listId);
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" failed to add item "+item+" to list with id "+listId);
+		}
+		
 		return bool;
 	}
 
 	@Override
 	public boolean removeItemFromList(String token, String item, int listId) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method removeItemFromList with properties: token="+token+" item="+item+" listId="+listId);
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return false;
 		}
 		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
 		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
 			logout(token);
 			return false;
 		}
 		PlebbitDatabase.db.updateTimeOnToken(token);
-		boolean bool = PlebbitDatabase.db.removeItem(item, listId, PlebbitDatabase.db.getIdFromUsername(PlebbitDatabase.db.getUsernameFromToken(token)));
+		boolean bool = PlebbitDatabase.db.removeItem(item, listId, PlebbitDatabase.db.getIdFromUsername(name));
 		PlebbitDatabase.db.updateListLastChanged(listId);
-		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" removed item "+item+" from list with id "+listId);
+		if(bool){
+			WriteSomething.writeInFile(WriteSomething.location, name+" removed item "+item+" from list with id "+listId);
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" failed to remove item "+item+" from list with id "+listId);
+		}
 		return bool;
 	}
 
 	@Override
 	public void logout(String token) {
-		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" logged out.");
-		PlebbitDatabase.db.updateToken(PlebbitDatabase.db.getUsernameFromToken(token), "");
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" logged out.");
+		PlebbitDatabase.db.updateToken(name, "");
 	}
 
 	@Override
 	public boolean tokenStillValid(String token) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
 		if(token.isEmpty() || token.equals("")){
+			WriteSomething.writeInFile(WriteSomething.location, name+" token still not valid.");
 			return false;
 		}
 		int[] returned = getListOfUser(token);
 		if(returned != null){
+			WriteSomething.writeInFile(WriteSomething.location, name+" token still valid.");
 			return true;
 		}
+		WriteSomething.writeInFile(WriteSomething.location, name+" token still not valid.");
 		return false;
 	}
 
@@ -224,5 +290,74 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 		long diff = cur - convertedStr;
 		int secs = (int)(diff / 1000000000L);
 		return secs;
+	}
+
+	@Override
+	public boolean setBoughtItem(int listId, String itemName, boolean bought, String token) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method setBoughtItem with properties: token="+token+" itemName="+itemName+" listId="+listId+" bought="+bought);
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return false;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
+			logout(token);
+			return false;
+		}
+		int[] lists = getListOfUser(token);
+		boolean isPart = false;
+		for(int i = 0; i < lists.length; i++){
+			if(lists[i] == listId){
+				isPart = true;
+				break;
+			}
+		}
+		if(isPart){
+			if(PlebbitDatabase.db.setBoughtItem(listId, itemName, bought)){
+				WriteSomething.writeInFile(WriteSomething.location, name+" set "+itemName+" in list "+listId+" to "+bought);
+				return true;
+			} else{
+				WriteSomething.writeInFile(WriteSomething.location, name+" failed to set "+itemName+" in list "+listId+" to "+bought);
+			}
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" is not in list "+listId);
+		}
+		return false;
+	}
+
+	@Override
+	public Item getItem(int listId, String itemName, String token) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method getItem with properties: token="+token+" itemName="+itemName+" listId="+listId);
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return null;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
+			logout(token);
+			return null;
+		}
+		int[] lists = getListOfUser(token);
+		boolean isPart = false;
+		for(int i = 0; i < lists.length; i++){
+			if(lists[i] == listId){
+				isPart = true;
+				break;
+			}
+		}
+		if(isPart){
+			Item item = PlebbitDatabase.db.getItem(listId, itemName);
+			if(item != null){
+				WriteSomething.writeInFile(WriteSomething.location, name+" has gotten item from list "+listId+".");
+			} else{
+				WriteSomething.writeInFile(WriteSomething.location, name+" has failed to get item from list "+listId+".");
+			}
+			return item;
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" is not part of list "+listId+".");
+			return null;
+		}
 	}
 }

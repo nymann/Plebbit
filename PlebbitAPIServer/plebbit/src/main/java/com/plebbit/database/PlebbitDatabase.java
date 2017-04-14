@@ -9,6 +9,7 @@ import com.mysql.jdbc.Statement;
 import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
 import com.plebbit.dto.User;
+import com.plebbit.helpers.WriteSomething;
 
 public class PlebbitDatabase implements IPlebbitDatabase{
 
@@ -37,7 +38,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 		
 		ResultSet itemsTable = databaseMeta.getTables(null, null, "items", null);
 		if (!itemsTable.next()) {
-			String sqlQuery = "CREATE TABLE items (listid INTEGER NOT NULL, itemname varchar(30) NOT NULL, userid INTEGER NOT NULL, FOREIGN KEY (listid) REFERENCES lists(listid), FOREIGN KEY (userid) REFERENCES users(userid));";
+			String sqlQuery = "CREATE TABLE items (listid INTEGER NOT NULL, itemname varchar(30) NOT NULL, userid INTEGER NOT NULL, bought bool, FOREIGN KEY (listid) REFERENCES lists(listid), FOREIGN KEY (userid) REFERENCES users(userid));";
 			DatabaseConnector.updateInDatabase(sqlQuery);
 		}
 	}
@@ -140,8 +141,8 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 					User user = new User();
 					user.userId = setTwo.getInt(2);
 					user.name = setThree.getString(2);
-					user.token = setThree.getString(3);
-					user.time = setThree.getString(4);
+					user.token = "";
+					user.time = "";
 					prop.users.add(user);
 				}
 			}
@@ -151,6 +152,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 			while(setFour.next()){
 				Item item = new Item();
 				item.name = setFour.getString(2);
+				item.bought = setFour.getBoolean(4);
 				int userId = setFour.getInt(3);
 				for(int i = 0 ; i < prop.users.size(); i++){
 					if(prop.users.get(i).userId == userId){
@@ -269,11 +271,13 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 		try {
 			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
 			if(set.next()){
+				WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" has valid token.");
 				return true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" has invalid token.");
 		return false;
 	}
 
@@ -422,6 +426,63 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 		return false;
 	}
 
-	
+	@Override
+	public boolean setBoughtItem(int listId, String itemName, boolean toSet) {
+		int bool = (toSet) ? 1 : 0;
+		String sqlUpdate = "update items set bought="+bool+" where listId="+listId+" and itemName='"+itemName+"';";
+		try {
+			DatabaseConnector.updateInDatabase(sqlUpdate);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
+	@Override
+	public Item getItem(int listId, String itemName) {
+		String sqlQuery = "select * from items where listId="+listId+" and itemName='"+itemName+"';";
+		try {
+			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
+			if(set.next()){
+				Item item = new Item();
+				item.name = set.getString(2);
+				item.bought = set.getBoolean(4);
+				String sqlUserQuery = "select * from users where userId="+set.getInt(3)+";";
+				ResultSet set2 = DatabaseConnector.queryInDatabase(sqlUserQuery);
+				if(set2.next()){
+					User user = new User();
+					user.userId = set2.getInt(1);
+					user.name = set2.getString(2);
+					user.token = "";
+					user.time = "";
+					item.user = user;
+				}
+				return item;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public User getUserFromToken(String token) {
+		String sqlQuery = "select * from users where token = "+token+";";
+		ResultSet set;
+		try {
+			set = DatabaseConnector.queryInDatabase(sqlQuery);
+			if(set.next()){
+				User user = new User();
+				user.userId = set.getInt(1);
+				user.name = set.getString(2);
+				user.token = token;
+				user.time = set.getString(4);
+				return user;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

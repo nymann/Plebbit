@@ -2,7 +2,9 @@ package com.plebbit.database;
 
 import java.sql.SQLException;
 
+import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
+import com.plebbit.dto.User;
 
 public interface IPlebbitDatabase {
 
@@ -49,4 +51,10 @@ public interface IPlebbitDatabase {
 	public boolean updateListLastChanged(int listid);
 	
 	public boolean renameListName(int listid, String newname);
+	
+	public boolean setBoughtItem(int listId, String itemName, boolean toSet);
+	
+	public Item getItem(int listId, String itemName);
+	
+	public User getUserFromToken(String token);
 }
