@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 import javax.xml.ws.Service;
 
-import org.omg.Messaging.SyncScopeHelper;
-
 import com.plebbit.dto.ListProperties;
 
 import javax.xml.namespace.QName;
@@ -116,7 +114,7 @@ public class PlebbitClient {
         					System.out.println("Items:");
         					if(lists[i].items != null){
         						for(int x = 0; x < lists[i].items.size(); x++){
-            						System.out.println("\t"+lists[i].items.get(x).name+" - "+lists[i].items.get(x).user.name);
+            						System.out.println("\t"+lists[i].items.get(x).name+" - "+lists[i].items.get(x).user.name +" - "+((lists[i].items.get(x).bought) ? "Bought" : "Not Bought"));
             					}
         					}
         				}
@@ -185,11 +183,38 @@ public class PlebbitClient {
         					System.out.println("Invalid list id.");
         				}
         				break;
-					case 6: 
+					case 6:
+						System.out.print("Type itemname: ");
+        				String itemName = scanner.nextLine();
+        				if(itemName.length() == 0 || itemName.isEmpty()){
+        					System.out.println("Invalid itemname");
+        					break;
+        				}
+        				System.out.print("Type id of list: ");
+        				int listId = Integer.parseInt(scanner.nextLine());
+        				if(listId == 0){
+        					System.out.println("Invalid list id.");
+        					break;
+        				}
+        				System.out.print("Set bought (1 for true, 0 for false): ");
+        				int trueOrFalse = Integer.parseInt(scanner.nextLine());
+        				if(trueOrFalse == 0 || trueOrFalse == 1){
+        					boolean temp = trueOrFalse == 1;
+        					if(iPlebbit.setBoughtItem(listId, itemName, temp, token)){
+        						System.out.println("Updated item!");
+        					} else{
+        						System.out.println("Failed to update item");
+        					}
+        				} else {
+        					System.out.println("Invalid boolean value.");
+    						break;
+        				}
+						break;
+					case 7: 
 						token = "";
 						isLoggedIn = false;
 						break;
-        			case 7:
+        			case 8:
         				isControlling = false; // <-- Soft exit
         				break;
         			}
@@ -198,6 +223,7 @@ public class PlebbitClient {
         		}
         	}
         }
+        scanner.close();
 	}
 	
 	public static void printOptionsLoggedIn(){
@@ -207,8 +233,9 @@ public class PlebbitClient {
 		System.out.println("3. Invite users to list");
 		System.out.println("4. Add item to list");
 		System.out.println("5. Delete list");
-		System.out.println("6. Logout");
-		System.out.println("7. Exit");
+		System.out.println("6. Set bought on item");
+		System.out.println("7. Logout");
+		System.out.println("8. Exit");
 	}
 	
 	public static void printOptionsNotLoggedIn(){

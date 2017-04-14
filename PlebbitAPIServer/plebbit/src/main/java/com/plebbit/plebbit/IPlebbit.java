@@ -3,6 +3,7 @@ package com.plebbit.plebbit;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
 
 @WebService
@@ -38,5 +39,11 @@ public interface IPlebbit {
 	@WebMethod public boolean tokenStillValid(String token);
 	
 	@WebMethod public int getPassedSecondsSinceLastChange(int listid);
+	
+	@WebMethod public boolean setBoughtItem(int listId, String itemName, boolean bought, String token);
+	
+	@WebMethod public Item getItem(int listId, String itemName, String token);
+	
+	@WebMethod public boolean renameItemName(int listId, String itemName, String newItemName, String token);
 	
 }
