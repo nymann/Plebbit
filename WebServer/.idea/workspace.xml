@@ -12,39 +12,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/plebbit/plebbit.war" afterPath="$PROJECT_DIR$/out/artifacts/plebbit/plebbit.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Servlet.class" afterPath="$PROJECT_DIR$/target/classes/Servlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Shoppinglists.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Shoppinglists.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Shoppinglists.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Shoppinglists.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/about.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/about.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/change.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/change.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/emailsent.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/emailsent.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/forgot.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/forgot.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/logout.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/logout.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/showlist.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/showlist.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/about.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/about.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/change.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/change.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/emailsent.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/emailsent.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/forgot.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/forgot.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/logout.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/logout.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/showlist.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/showlist.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Shoppinglists.jsp" afterPath="$PROJECT_DIR$/target/classes/Shoppinglists.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/about.jsp" afterPath="$PROJECT_DIR$/target/classes/about.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/change.jsp" afterPath="$PROJECT_DIR$/target/classes/change.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/emailsent.jsp" afterPath="$PROJECT_DIR$/target/classes/emailsent.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/forgot.jsp" afterPath="$PROJECT_DIR$/target/classes/forgot.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/index.jsp" afterPath="$PROJECT_DIR$/target/classes/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/logout.jsp" afterPath="$PROJECT_DIR$/target/classes/logout.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/showlist.jsp" afterPath="$PROJECT_DIR$/target/classes/showlist.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/about.jsp" afterPath="$PROJECT_DIR$/web/about.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/change.jsp" afterPath="$PROJECT_DIR$/web/change.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/emailsent.jsp" afterPath="$PROJECT_DIR$/web/emailsent.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/forgot.jsp" afterPath="$PROJECT_DIR$/web/forgot.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/logout.jsp" afterPath="$PROJECT_DIR$/web/logout.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/shoppinglists.jsp" afterPath="$PROJECT_DIR$/web/shoppinglists.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/showlist.jsp" afterPath="$PROJECT_DIR$/web/showlist.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,8 +32,8 @@
       <file leaf-file-name="Servlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Servlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="167" column="46" lean-forward="false" selection-start-line="167" selection-start-column="46" selection-end-line="167" selection-end-column="46" />
+            <state relative-caret-position="149">
+              <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -266,8 +234,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="333" />
+    <option name="y" value="185" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -914,7 +882,7 @@
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 9.0.0.M1" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M1" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:3281/" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:3282/" />
       <deployment>
         <artifact name="WebServer:war exploded">
           <settings>
@@ -924,7 +892,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Tomcat_9_0_0_M1_WebServer_2" />
-        <option name="HTTP_PORT" value="3281" />
+        <option name="HTTP_PORT" value="3282" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -1019,10 +987,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89188000" />
+    <option name="totallyTimeSpent" value="90176000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="333" y="185" width="1936" height="1056" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1293,8 +1261,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Servlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="167" column="46" lean-forward="false" selection-start-line="167" selection-start-column="46" selection-end-line="167" selection-end-column="46" />
+        <state relative-caret-position="149">
+          <caret line="75" column="9" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

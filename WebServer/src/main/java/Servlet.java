@@ -86,9 +86,15 @@ public class Servlet extends HttpServlet {
 
         if (request.getParameter("deletelist") != null) {
             int listId = Integer.parseInt(request.getParameter("deletelist"));
-            iPlebbit.deleteList(tokenId, listId);
-
             System.out.println("User wanted to delete list, with list-id: " + listId + ".");
+            if (iPlebbit.deleteList(tokenId, listId)) {
+                System.out.println("delete succeeded.");
+            }
+            else {
+                System.out.println("couldn't delete list.");
+            }
+
+
             response.sendRedirect("shoppinglists.jsp");
         }
 
