@@ -47,7 +47,11 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			Random rand = new Random();
 			int num = rand.nextInt(1000);
 			String token = System.nanoTime()+""+num;
-			PlebbitDatabase.db.updateToken(username, token);
+			if(PlebbitDatabase.db.updateToken(username, token)){
+				WriteSomething.writeInFile(WriteSomething.location, "User "+username+" updated token on login.");
+			} else{
+				WriteSomething.writeInFile(WriteSomething.location, "User "+username+" failed to update token on login.");
+			}
 			PlebbitDatabase.db.updateTime(username);
 			WriteSomething.writeInFile(WriteSomething.location, "User "+username+" logged in!");
 			return token;
