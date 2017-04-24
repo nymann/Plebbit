@@ -139,12 +139,12 @@
                                 "\t\t\t\t</tr>");
                         count++;
                     }
-                    out.println("\n\t\t\t</table>");
-
-                    out.println("<form action=\"\\Servlet\" method=\"post\">");
-                    out.println("\t<input name=\"createnewlist\" type=\"text\" placeholder=\"name of new shopping list\" id=\"additem\" autofocus=\"autofocus\"/>");
-                    out.println("</form>");
                 }
+                out.println("\n\t\t\t</table>");
+
+                out.println("<form action=\"\\Servlet\" method=\"post\">");
+                out.println("\t<input name=\"createnewlist\" type=\"text\" placeholder=\"name of new shopping list\" id=\"additem\" autofocus=\"autofocus\"/>");
+                out.println("</form>");
             %>
 
         </div>
