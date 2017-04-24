@@ -153,23 +153,6 @@ td, th {
     margin-top: 50px;
 }
 
-#username:hover, #password:hover, #new-password:hover, #new-password-again:hover, #createnewlist:hover {
-    box-shadow: 0 0 5px #888888;
-}
-
-#username, #password, #new-password, #new-password-again, #createnewlist {
-    margin-top: 30px;
-    background-color: #99cccc;
-    padding: 9px 9px 9px 9px;
-    font-size: 20px;
-    text-align: center;
-    font-family: 'Roboto', monospace;
-    width: 100%;
-    border: none;
-    color: #ecfbfb;
-    text-transform: uppercase;
-}
-
 #login-button, button, #forgot-button, #password-button{
     color: #99cccc;
     border: none;
@@ -181,6 +164,23 @@ td, th {
     background-color: inherit;
     font-family: 'Roboto', monospace;
     text-align: center;
+}
+
+#username:hover, #password:hover, #new-password:hover, #new-password-again:hover, #createnewlist:hover {
+    box-shadow: 0 0 5px #888888;
+}
+
+#username, #password, #new-password, #new-password-again, #createnewlist, #additem {
+    margin-top: 30px;
+    background-color: #99cccc;
+    padding: 9px 9px 9px 9px;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Roboto', monospace;
+    width: 100%;
+    border: none;
+    color: #ecfbfb;
+    text-transform: uppercase;
 }
 
 footer h4 a {

@@ -42,6 +42,15 @@ public class Servlet extends HttpServlet {
             response.sendRedirect("shoppinglists.jsp");
         }
 
+        if (request.getParameter("additem") != null) {
+            int listId = Integer.parseInt(request.getParameter("listid"));
+            String itemToAdd = request.getParameter("additem");
+            iPlebbit.addItemToList(tokenId, itemToAdd, listId);
+
+            // Redirect the user back to the previous page.
+            response.sendRedirect("Servlet?shoppinglist=" + listId);
+        }
+
         if (request.getParameter("nameoflist") != null) {
             /* Name change of list */
 

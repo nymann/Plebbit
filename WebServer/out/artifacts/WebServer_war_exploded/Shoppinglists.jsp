@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Plebbit.dk | Change Password</title>
+    <title>Plebbit.dk | The online shopping helper</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
