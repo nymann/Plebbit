@@ -36,6 +36,12 @@ public class Servlet extends HttpServlet {
             tokenId = "";
         }
 
+        if (request.getParameter("createnewlist") != null) {
+            iPlebbit.createNewList(tokenId, "new list");
+            System.out.println("new list added!");
+            response.sendRedirect("shoppinglists.jsp");
+        }
+
         if (request.getParameter("nameoflist") != null) {
             /* Name change of list */
 

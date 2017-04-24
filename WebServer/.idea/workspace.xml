@@ -14,13 +14,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Shoppinglists.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Shoppinglists.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Shoppinglists.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Shoppinglists.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/showlist.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/showlist.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/showlist.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/showlist.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/css/style.css" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/style.css" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/css/style.css" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Shoppinglists.jsp" afterPath="$PROJECT_DIR$/target/classes/Shoppinglists.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/showlist.jsp" afterPath="$PROJECT_DIR$/target/classes/showlist.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/css/style.css" afterPath="$PROJECT_DIR$/target/classes/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/style.css" afterPath="$PROJECT_DIR$/target/classes/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/style.css" afterPath="$PROJECT_DIR$/web/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/shoppinglists.jsp" afterPath="$PROJECT_DIR$/web/shoppinglists.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/showlist.jsp" afterPath="$PROJECT_DIR$/web/showlist.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,11 +39,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Servlet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Servlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Servlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-208">
-              <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+            <state relative-caret-position="846">
+              <caret line="201" column="27" lean-forward="false" selection-start-line="201" selection-start-column="23" selection-end-line="201" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shoppinglists.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="shoppinglists.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/shoppinglists.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1972">
-              <caret line="116" column="46" lean-forward="true" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="47" />
+            <state relative-caret-position="183">
+              <caret line="136" column="68" lean-forward="false" selection-start-line="136" selection-start-column="62" selection-end-line="136" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -62,8 +64,8 @@
       <file leaf-file-name="showlist.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/showlist.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="104" column="129" lean-forward="true" selection-start-line="102" selection-start-column="32" selection-end-line="104" selection-end-column="129" />
+            <state relative-caret-position="920">
+              <caret line="99" column="57" lean-forward="true" selection-start-line="99" selection-start-column="57" selection-end-line="99" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -77,6 +79,16 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="169" column="30" lean-forward="true" selection-start-line="169" selection-start-column="30" selection-end-line="169" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,7 +115,10 @@
       <find>system.out.println</find>
       <find>Are</find>
       <find>Are you</find>
+      <find>username</find>
       <find>bought</find>
+      <find>size</find>
+      <find>delete</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,11 +175,11 @@
         <option value="$PROJECT_DIR$/web/change.jsp" />
         <option value="$PROJECT_DIR$/web/emailsent.jsp" />
         <option value="$PROJECT_DIR$/web/forgot.jsp" />
-        <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/plebbit/plebbit/IPlebbit.java" />
         <option value="$PROJECT_DIR$/web/showlist.jsp" />
-        <option value="$PROJECT_DIR$/web/shoppinglists.jsp" />
+        <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/java/Servlet.java" />
+        <option value="$PROJECT_DIR$/web/shoppinglists.jsp" />
       </list>
     </option>
   </component>
@@ -837,6 +852,7 @@
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 9.0.0.M1" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M1" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:3267/" />
       <deployment>
         <artifact name="WebServer:war exploded">
           <settings>
@@ -846,7 +862,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Tomcat_9_0_0_M1_WebServer_2" />
-        <option name="HTTP_PORT" value="3254" />
+        <option name="HTTP_PORT" value="3267" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -941,7 +957,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81841000" />
+    <option name="totallyTimeSpent" value="85540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1155,14 +1171,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3213">
-          <caret line="189" column="8" lean-forward="false" selection-start-line="189" selection-start-column="8" selection-end-line="189" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/forgot.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -1197,29 +1205,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/shoppinglists.jsp">
+    <entry file="file://$PROJECT_DIR$/web/showlist.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1972">
-          <caret line="116" column="46" lean-forward="true" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="47" />
+        <state relative-caret-position="920">
+          <caret line="99" column="57" lean-forward="true" selection-start-line="99" selection-start-column="57" selection-end-line="99" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/showlist.jsp">
+    <entry file="file://$PROJECT_DIR$/web/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="104" column="129" lean-forward="true" selection-start-line="102" selection-start-column="32" selection-end-line="104" selection-end-column="129" />
+        <state relative-caret-position="268">
+          <caret line="169" column="30" lean-forward="true" selection-start-line="169" selection-start-column="30" selection-end-line="169" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Servlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
-          <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        <state relative-caret-position="846">
+          <caret line="201" column="27" lean-forward="false" selection-start-line="201" selection-start-column="23" selection-end-line="201" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/shoppinglists.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="136" column="68" lean-forward="false" selection-start-line="136" selection-start-column="62" selection-end-line="136" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>

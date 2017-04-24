@@ -80,25 +80,50 @@
                         int lastChange = secondsSinceLastChangeForItemLists.get(count);
                         String changed = "";
                         if (lastChange < 60) {
-                            changed = lastChange + " sec. ago";
+                            if (lastChange == 0) {
+                                changed = " now.";
+                            }
+                            else if (lastChange == 1) {
+                                changed = " a second ago.";
+                            }
+                            else {
+                                changed = lastChange + " seconds ago.";
+                            }
                         }
                         else if (lastChange < 3600) {
-                            changed = lastChange/60 + " min. ago";
+                            int minutes = lastChange/60;
+
+                            if (minutes == 1) {
+                                changed = " a minute ago.";
+                            } else {
+                                changed = minutes + " minutes ago.";
+                            }
                         }
                         else if (lastChange < 86400){
-                            changed = lastChange/3600 + " hours ago";
-                            if (changed.contains("1")) {
-                                // 1 hour ago, instead of 1 hours ago.
-                                changed = changed.replace("s", "");
+                            int hours = lastChange/3600;
+                            if (hours == 1) {
+                                changed = " an hour ago.";
+                            } else {
+                                changed = hours + " hours ago.";
                             }
                         }
 
                         else {
-                            changed = lastChange/86400 + " days ago";
+                            int days = lastChange/86400;
+                            if (days == 1) {
+                                changed = " a day ago.";
+                            }
+                            else {
+                                changed = days + " days ago.";
+                            }
                         }
 
                         if (shoppingList == null) {
                             continue;
+                        }
+                        int size = 0;
+                        if (shoppingList.items != null) {
+                            size = shoppingList.items.size();
                         }
                         out.println("\t\t\t\t<tr>\n" +
                                 "\t\t\t\t\t<td>\n" +
@@ -106,7 +131,7 @@
                                 "\t\t\t\t\t\t\t<button name=\"shoppinglist\" type=\"submit\" value=\"" + shoppingList.listId + "\">" + shoppingList.nameOfList + "</button>\n" +
                                 "\t\t\t\t\t\t</form>\n" +
                                 "\t\t\t\t\t</td>\n" +
-                                "\t\t\t\t\t<td>2</td>\n" +
+                                "\t\t\t\t\t<td>" + size + "</td>\n" +
                                 "\t\t\t\t\t<td>" + changed + "</td>\n" +
                                 "\t\t\t\t\t\t<td><form action=\"\\Servlet\" method=\"post\">\n" +
                                 "\t\t\t\t\t\t\t<button name=\"deletelist\" type=\"submit\" value=\"" + shoppingList.listId + "\" id=\"deleteicon\">X</button>\n" +
@@ -114,7 +139,11 @@
                                 "\t\t\t\t</tr>");
                         count++;
                     }
-                    out.println("\t\t\t</table>");
+                    out.println("\n\t\t\t</table>");
+
+                    out.println("\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
+                            "\t\t\t<button name=\"createnewlist\" type=\"submit\" id=\"createnewlist\">Add new shopping list!</button>\n" +
+                            "\t\t</form>");
                 }
             %>
 
