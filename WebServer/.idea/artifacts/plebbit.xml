@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="plebbit">
+    <output-path>$PROJECT_DIR$/out/artifacts/plebbit</output-path>
+    <root id="archive" name="plebbit.war">
+      <element id="artifact" artifact-name="WebServer:war exploded" />
+    </root>
+  </artifact>
+</component>

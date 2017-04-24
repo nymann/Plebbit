@@ -26,7 +26,6 @@ public class Servlet extends HttpServlet {
     private IPlebbit iPlebbit = plebbitService.getPort(IPlebbit.class);
     private String tokenId = ""; // not thread safe
 
-
     public Servlet() throws MalformedURLException {
     }
 
@@ -119,10 +118,8 @@ public class Servlet extends HttpServlet {
                         System.out.println("Value: " + cookie.getValue() + ".");
                     }
                 }*/
-                response.sendRedirect("index.jsp");
-            } else {
-                response.sendRedirect("index.jsp");
             }
+            response.sendRedirect("index.jsp");
         }
     }
 
@@ -132,7 +129,6 @@ public class Servlet extends HttpServlet {
 
         if (request.getParameter("shoppinglist") != null) {
             int listId = Integer.parseInt(request.getParameter("shoppinglist"));
-            System.out.println(request.getParameter("shoppinglist"));
             ListProperties listInQuestion = iPlebbit.getListFromId(listId, tokenId);
             request.setAttribute("list", listInQuestion);
             request.getRequestDispatcher("showlist.jsp").forward(request, response);
@@ -158,11 +154,11 @@ public class Servlet extends HttpServlet {
                 break;
 
             case "/index.jsp":
-                /*request.setAttribute("loggedIn", isUserLoggedIn());*/
+                request.setAttribute("loggedIn", isUserLoggedIn());
                 break;
 
             case "/":
-                /*request.setAttribute("loggedIn", isUserLoggedIn());*/
+                request.setAttribute("loggedIn", isUserLoggedIn());
                 break;
 
             case "/logout.jsp":
@@ -174,7 +170,6 @@ public class Servlet extends HttpServlet {
 
     private boolean login(String username, String password) {
         tokenId = iPlebbit.login(username, password);
-        //new Cookie("tokenId", tokenId);
         return iPlebbit.tokenStillValid(tokenId);
     }
 
