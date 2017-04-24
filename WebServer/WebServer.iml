@@ -10,11 +10,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/web" />
-          <root url="file://$MODULE_DIR$/web/css" />
-          <root url="file://$MODULE_DIR$/web/img" />
-        </sourceRoots>
       </configuration>
     </facet>
   </component>
