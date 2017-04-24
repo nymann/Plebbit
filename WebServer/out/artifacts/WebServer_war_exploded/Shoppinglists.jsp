@@ -8,7 +8,7 @@
   Time: 16:32
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,9 +141,9 @@
                     }
                     out.println("\n\t\t\t</table>");
 
-                    out.println("\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
-                            "\t\t\t<button name=\"createnewlist\" type=\"submit\" id=\"createnewlist\">Add new shopping list!</button>\n" +
-                            "\t\t</form>");
+                    out.println("<form action=\"\\Servlet\" method=\"post\">");
+                    out.println("\t<input name=\"createnewlist\" type=\"text\" placeholder=\"name of new shopping list\" id=\"additem\" autofocus=\"autofocus\"/>");
+                    out.println("</form>");
                 }
             %>
 

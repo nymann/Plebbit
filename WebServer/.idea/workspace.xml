@@ -14,21 +14,35 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Shoppinglists.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/Shoppinglists.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Shoppinglists.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/Shoppinglists.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/css/style.css" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/about.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/about.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/change.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/change.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/emailsent.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/emailsent.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/forgot.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/forgot.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/logout.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/logout.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/showlist.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/showlist.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/style.css" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/WEB-INF/classes/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/css/style.css" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/about.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/about.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/change.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/change.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/emailsent.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/emailsent.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/forgot.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/forgot.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/index.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/logout.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/logout.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/showlist.jsp" afterPath="$PROJECT_DIR$/out/artifacts/WebServer_war_exploded/showlist.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Shoppinglists.jsp" afterPath="$PROJECT_DIR$/target/classes/Shoppinglists.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/css/style.css" afterPath="$PROJECT_DIR$/target/classes/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/about.jsp" afterPath="$PROJECT_DIR$/target/classes/about.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/change.jsp" afterPath="$PROJECT_DIR$/target/classes/change.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/emailsent.jsp" afterPath="$PROJECT_DIR$/target/classes/emailsent.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/forgot.jsp" afterPath="$PROJECT_DIR$/target/classes/forgot.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/index.jsp" afterPath="$PROJECT_DIR$/target/classes/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/logout.jsp" afterPath="$PROJECT_DIR$/target/classes/logout.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/showlist.jsp" afterPath="$PROJECT_DIR$/target/classes/showlist.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/style.css" afterPath="$PROJECT_DIR$/target/classes/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/style.css" afterPath="$PROJECT_DIR$/web/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/about.jsp" afterPath="$PROJECT_DIR$/web/about.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/change.jsp" afterPath="$PROJECT_DIR$/web/change.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/emailsent.jsp" afterPath="$PROJECT_DIR$/web/emailsent.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/forgot.jsp" afterPath="$PROJECT_DIR$/web/forgot.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/logout.jsp" afterPath="$PROJECT_DIR$/web/logout.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/shoppinglists.jsp" afterPath="$PROJECT_DIR$/web/shoppinglists.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/showlist.jsp" afterPath="$PROJECT_DIR$/web/showlist.jsp" />
     </list>
@@ -47,96 +61,23 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Servlet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Servlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Servlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="167" column="46" lean-forward="false" selection-start-line="167" selection-start-column="46" selection-end-line="167" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#doGet#0;class#Servlet#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="showlist.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="showlist.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/showlist.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="105" column="145" lean-forward="false" selection-start-line="105" selection-start-column="145" selection-end-line="105" selection-end-column="145" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IPlebbit.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/plebbit/plebbit/IPlebbit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shoppinglists.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/shoppinglists.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="56" column="44" lean-forward="false" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forgot.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/forgot.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="about.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/about.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-457">
-              <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="emailsent.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/emailsent.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="35" lean-forward="false" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="change.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/change.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="45" column="113" lean-forward="false" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="113" />
+            <state relative-caret-position="153">
+              <caret line="9" column="86" lean-forward="false" selection-start-line="9" selection-start-column="86" selection-end-line="9" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -145,8 +86,68 @@
       <file leaf-file-name="logout.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/logout.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+            <state relative-caret-position="119">
+              <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shoppinglists.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/shoppinglists.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="86" lean-forward="false" selection-start-line="10" selection-start-column="86" selection-end-line="10" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forgot.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/forgot.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="about.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/about.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="emailsent.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/emailsent.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="change.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/change.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -179,6 +180,7 @@
       <find>size</find>
       <find>button</find>
       <find>delete</find>
+      <find>new</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -229,17 +231,17 @@
         <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/web/forgot.html" />
         <option value="$PROJECT_DIR$/web/change.html" />
-        <option value="$PROJECT_DIR$/web/about.jsp" />
-        <option value="$PROJECT_DIR$/web/index.jsp" />
-        <option value="$PROJECT_DIR$/web/logout.jsp" />
-        <option value="$PROJECT_DIR$/web/change.jsp" />
-        <option value="$PROJECT_DIR$/web/forgot.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/plebbit/plebbit/IPlebbit.java" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
-        <option value="$PROJECT_DIR$/src/main/java/Servlet.java" />
         <option value="$PROJECT_DIR$/web/shoppinglists.jsp" />
-        <option value="$PROJECT_DIR$/web/emailsent.jsp" />
         <option value="$PROJECT_DIR$/web/showlist.jsp" />
+        <option value="$PROJECT_DIR$/web/logout.jsp" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/web/forgot.jsp" />
+        <option value="$PROJECT_DIR$/web/emailsent.jsp" />
+        <option value="$PROJECT_DIR$/web/change.jsp" />
+        <option value="$PROJECT_DIR$/web/about.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/Servlet.java" />
       </list>
     </option>
   </component>
@@ -912,6 +914,7 @@
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 9.0.0.M1" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M1" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:3281/" />
       <deployment>
         <artifact name="WebServer:war exploded">
           <settings>
@@ -921,7 +924,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Tomcat_9_0_0_M1_WebServer_2" />
-        <option name="HTTP_PORT" value="3278" />
+        <option name="HTTP_PORT" value="3281" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -1016,7 +1019,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87932000" />
+    <option name="totallyTimeSpent" value="89188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1121,7 +1124,6 @@
           <caret line="30" column="25" lean-forward="false" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#doGet#0;class#Servlet#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1225,78 +1227,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Servlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#doGet#0;class#Servlet#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/shoppinglists.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/logout.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="44" lean-forward="false" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/forgot.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="17" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/emailsent.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="35" lean-forward="false" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/about.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-457">
-          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/change.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="45" column="113" lean-forward="false" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="113" />
+        <state relative-caret-position="170">
+          <caret line="10" column="86" lean-forward="false" selection-start-line="10" selection-start-column="86" selection-end-line="10" selection-end-column="86" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/showlist.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="105" column="145" lean-forward="false" selection-start-line="105" selection-start-column="145" selection-end-line="105" selection-end-column="145" />
+        <state relative-caret-position="153">
+          <caret line="9" column="86" lean-forward="false" selection-start-line="9" selection-start-column="86" selection-end-line="9" selection-end-column="86" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/logout.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/forgot.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/change.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/emailsent.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/about.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="86" lean-forward="false" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Servlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="167" column="46" lean-forward="false" selection-start-line="167" selection-start-column="46" selection-end-line="167" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

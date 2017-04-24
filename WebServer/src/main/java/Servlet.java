@@ -20,7 +20,6 @@ import java.util.ArrayList;
  */
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
-
     private URL plebbitUrl = new URL("http://gibbo.dk:9427/plebbit?wsdl");
     private QName plebbitQName = new QName("http://plebbit.plebbit.com/", "PlebbitLogicService");
     private Service plebbitService = Service.create(plebbitUrl, plebbitQName);
@@ -31,14 +30,16 @@ public class Servlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         if (request.getParameter("logout") != null) {
             iPlebbit.logout(tokenId);
             tokenId = "";
         }
 
         if (request.getParameter("createnewlist") != null) {
-            iPlebbit.createNewList(tokenId, "new list");
-            System.out.println("new list added!");
+            String listName = request.getParameter("createnewlist");
+            iPlebbit.createNewList(tokenId, listName);
+            System.out.println("new list, with the name " + listName + " added!");
             response.sendRedirect("shoppinglists.jsp");
         }
 
@@ -164,6 +165,7 @@ public class Servlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String currentPage = request.getRequestURI();
         request.setAttribute("loggedIn", isUserLoggedIn());
 
