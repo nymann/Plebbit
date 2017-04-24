@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:text="Username:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/username"
+        android:layout_weight="0.04"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/usernameTextEdit"
+        android:layout_weight="0.07"
+        android:hint="Type username here"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="Password:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:layout_weight="0.04"
+        android:password="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwordTextEdit"
+        android:layout_weight="0.07"
+        android:hint="Type password here"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.23">
+
+        <Button
+            android:text="Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginButton"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="Forgot password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/forgotPassword"
+            android:layout_weight="1" />
+    </LinearLayout>
+</LinearLayout>
