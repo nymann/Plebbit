@@ -283,8 +283,11 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	@Override
 	public boolean deleteList(String token, int listId) {
 		ListProperties lp = PlebbitDatabase.db.getList(listId);
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" deletelist start with token "+token);
+		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" deletelist users size "+lp.users.size());
 		if(lp.users.size() > 0){
-			if(lp.users.get(0).token.equals(token)){
+			WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" deletelist token "+lp.users.get(0).token);
+			if(lp.users.get(0).name.equals(PlebbitDatabase.db.getUsernameFromToken(token))){
 				//Is owner
 				try {
 					String sqlUpdateItems = "delete from items where listid ="+listId+";";
