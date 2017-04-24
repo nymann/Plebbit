@@ -1,10 +1,11 @@
 import com.plebbit.dto.ListProperties;
 import com.plebbit.plebbit.IPlebbit;
 
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Project name: WebServer
  * Developed by: Nymann
- * GitHub: github.com/Nymann/WebServer
+ * GitHub: github.com/Nymann/Plebbit
  */
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
@@ -37,26 +38,50 @@ public class Servlet extends HttpServlet {
 
         if (request.getParameter("nameoflist") != null) {
             /* Name change of list */
+
             int listId = Integer.parseInt(request.getParameter("listid"));
+
+            // Changing the name of the list.
+            /* Implement: iPlebbit.renameList(String newName, int lidtId, String tokenId) here, when it's added to the API. */
+
+            // Redirect the user back to the previous page.
+            response.sendRedirect("Servlet?shoppinglist=" + listId);
         }
 
         if (request.getParameter("iteminlist") != null) {
             /* Change name of item in list*/
+            String oldItemName = request.getParameter("olditemname");
+            String newItemName = request.getParameter("iteminlist");
             int listId = Integer.parseInt(request.getParameter("listid"));
+            System.out.println("Rename requested, old-name: " + oldItemName + ", new-name: " + newItemName + ", list-id: " + listId + ".");
+
+            iPlebbit.renameItemName(listId, oldItemName, newItemName, tokenId); // todo: not working on API end.
+            response.sendRedirect("Servlet?shoppinglist=" + listId);
         }
 
         if (request.getParameter("boughtitemfromlist") != null) {
             /* Confirm item bought */
             int listId = Integer.parseInt(request.getParameter("listid"));
-            System.out.println(request.getParameter("boughtitemfromlist") + " bought.");
+            String itemName = request.getParameter("boughtitemfromlist");
+            iPlebbit.setBoughtItem(listId, itemName, true, tokenId);
+
+            response.sendRedirect("Servlet?shoppinglist=" + listId);
+        }
+
+        if (request.getParameter("deletelist") != null) {
+            int listId = Integer.parseInt(request.getParameter("deletelist"));
+            iPlebbit.deleteList(tokenId, listId);
+
+            System.out.println("User wanted to delete list, with list-id: " + listId + ".");
+            response.sendRedirect("shoppinglists.jsp");
         }
 
         if (request.getParameter("deleteitemfromlist") != null) {
             /* Delete an item from the current list */
-            System.out.println(request.getParameter("listid"));
             int listId = Integer.parseInt(request.getParameter("listid"));
             iPlebbit.removeItemFromList(tokenId, request.getParameter("deleteitemfromlist"), listId);
-            return;
+
+            response.sendRedirect("Servlet?shoppinglist=" + listId);
         }
 
         if (request.getParameter("forgot-password") != null) {
@@ -143,11 +168,13 @@ public class Servlet extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 } else {
                     ArrayList<ListProperties> temp = new ArrayList<>();
-
+                    ArrayList<Integer> secondsSinceLastChange = new ArrayList<>();
                     for (int id : userListIds) {
                         temp.add(iPlebbit.getListFromId(id, tokenId));
+                        secondsSinceLastChange.add(iPlebbit.getPassedSecondsSinceLastChange(id));
                     }
 
+                    request.setAttribute("secondsSinceLastChange", secondsSinceLastChange);
                     request.setAttribute("shoppingLists", temp.toArray(new ListProperties[temp.size()]));
                 }
 
@@ -163,6 +190,10 @@ public class Servlet extends HttpServlet {
 
             case "/logout.jsp":
                 iPlebbit.logout(tokenId);
+                request.setAttribute("loggedIn", isUserLoggedIn());
+                break;
+
+            case "/showlist.jsp":
                 request.setAttribute("loggedIn", isUserLoggedIn());
                 break;
         }

@@ -1,6 +1,7 @@
 <%@ page import="com.plebbit.dto.ListProperties" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.plebbit.dto.Item" %><%--
+<%@ page import="com.plebbit.dto.Item" %>
+<%@ page import="com.sun.org.apache.xalan.internal.xsltc.util.IntegerArray" %><%--
   Created by IntelliJ IDEA.
   User: Nymann
   Date: 11/04/2017
@@ -63,14 +64,39 @@
                 else if (shoppingLists.length < 1) {
                     out.println("<h2>You don't have any shopping lists yet.</h2>");
                 } else {
+                    ArrayList<Integer> secondsSinceLastChangeForItemLists = new ArrayList<>();
+                    secondsSinceLastChangeForItemLists = (ArrayList<Integer>) request.getAttribute("secondsSinceLastChange");
                     out.println("<table>\n" +
                             "\t\t\t\t<tr>\n" +
                             "\t\t\t\t\t<th>List name</th>\n" +
                             "\t\t\t\t\t<th>No. of Items</th>\n" +
                             "\t\t\t\t\t<th>Changed</th>\n" +
+                            "\t\t\t\t\t<th>Delete</th>\n" +
                             "\t\t\t\t</tr>");
 
+
+                    int count = 0;
                     for (ListProperties shoppingList : shoppingLists) {
+                        int lastChange = secondsSinceLastChangeForItemLists.get(count);
+                        String changed = "";
+                        if (lastChange < 60) {
+                            changed = lastChange + " sec. ago";
+                        }
+                        else if (lastChange < 3600) {
+                            changed = lastChange/60 + " min. ago";
+                        }
+                        else if (lastChange < 86400){
+                            changed = lastChange/3600 + " hours ago";
+                            if (changed.contains("1")) {
+                                // 1 hour ago, instead of 1 hours ago.
+                                changed = changed.replace("s", "");
+                            }
+                        }
+
+                        else {
+                            changed = lastChange/86400 + " days ago";
+                        }
+
                         if (shoppingList == null) {
                             continue;
                         }
@@ -81,8 +107,12 @@
                                 "\t\t\t\t\t\t</form>\n" +
                                 "\t\t\t\t\t</td>\n" +
                                 "\t\t\t\t\t<td>2</td>\n" +
-                                "\t\t\t\t\t<td>5 min. ago</td>\n" +
+                                "\t\t\t\t\t<td>" + changed + "</td>\n" +
+                                "\t\t\t\t\t\t<td><form action=\"\\Servlet\" method=\"post\">\n" +
+                                "\t\t\t\t\t\t\t<button name=\"deletelist\" type=\"submit\" value=\"" + shoppingList.listId + "\" id=\"deleteicon\">X</button>\n" +
+                                "\t\t\t\t\t\t\t</form></td>" +
                                 "\t\t\t\t</tr>");
+                        count++;
                     }
                     out.println("\t\t\t</table>");
                 }

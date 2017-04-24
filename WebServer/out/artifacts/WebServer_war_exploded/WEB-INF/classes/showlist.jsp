@@ -84,9 +84,10 @@
                     for (Item item: shoppingList.items) {
                         out.println("<tr>\n" +
                                 "\t\t\t\t\t<td>\n" +
-                                "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"get\">\n" +
+                                "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
                                 "\t\t\t\t\t\t\t<input name=\"iteminlist\" type=\"text\" value=\"" + item.name + "\" id=\"iteminlist\">\n" +
                                 "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
+                                "\t\t\t\t\t\t\t<input name=\"olditemname\" type=\"hidden\" value=\"" + item.name + "\" id=\"iteminlist\">\n" +
                                 "\t\t\t\t\t\t</form>\n" +
                                 "\t\t\t\t\t</td>\n" +
                                 "\t\t\t\t\t<td>\n" +
