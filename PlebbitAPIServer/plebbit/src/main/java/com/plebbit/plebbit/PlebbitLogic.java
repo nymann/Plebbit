@@ -289,7 +289,16 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 	@Override
 	public int getPassedSecondsSinceLastChange(int listid) {
 		String str = PlebbitDatabase.db.getListLastChanged(listid);
-		long convertedStr = Long.parseLong(str);
+		if(str.isEmpty() || str.equals("")){
+			return 0;
+		}
+		long convertedStr;
+		try{
+			convertedStr = Long.parseLong(str);
+		} catch(NumberFormatException e){
+			e.printStackTrace();
+			return 0;
+		}
 		long cur = System.nanoTime();
 		long diff = cur - convertedStr;
 		int secs = (int)(diff / 1000000000L);
@@ -387,6 +396,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			}
 		}
 		if(isPart){
+			WriteSomething.writeInFile(WriteSomething.location, name+" is part of list "+listId);
 			if(PlebbitDatabase.db.setItemName(listId, itemName, newItemName)){
 				WriteSomething.writeInFile(WriteSomething.location, name+" renamed "+itemName+" to "+newItemName+" in list "+listId+".");
 			} else{

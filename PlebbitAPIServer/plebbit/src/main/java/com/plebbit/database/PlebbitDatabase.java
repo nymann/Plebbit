@@ -490,7 +490,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean setItemName(int listId, String itemName, String newName) {
-		String sqlUpdate = "update items set itemname= "+newName+" where listid = "+listId+" and itemname='"+itemName+"';";
+		String sqlUpdate = "update items set itemname = '"+newName+"' where listid = "+listId+" and itemname='"+itemName+"';";
 		try {
 			DatabaseConnector.updateInDatabase(sqlUpdate);
 			return true;
