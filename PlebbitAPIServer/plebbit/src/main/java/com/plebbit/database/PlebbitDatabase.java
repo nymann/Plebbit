@@ -8,14 +8,17 @@ import java.util.ArrayList;
 import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
 import com.plebbit.dto.User;
+import com.plebbit.helpers.TimeTools;
 import com.plebbit.helpers.WriteSomething;
 
 public class PlebbitDatabase implements IPlebbitDatabase{
 
 	public static PlebbitDatabase db;
+	public static long lastDataBaseChange = System.nanoTime();
 	
 	@Override
 	public void checkTables() throws SQLException{
+		checkConnection();
 		DatabaseMetaData databaseMeta = DatabaseConnector.getTotalConnector().getConnection().getMetaData();
 		ResultSet usersTable = databaseMeta.getTables(null, null, "users", null);
 		if (!usersTable.next()) {
@@ -44,6 +47,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	
 	@Override
 	public boolean userExists(String username) {
+		checkConnection();
 		String sqlQuery = "select * from users where username = '"+username+"';";
 		try {
 			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
@@ -58,6 +62,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean createUser(String username) {
+		checkConnection();
 		if(this.userExists(username)){
 			return false;
 		}
@@ -73,6 +78,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean createList(String listname, String username) {
+		checkConnection();
 		String sqlQuery = "INSERT INTO lists (listname, lastChanged) VALUES('"+listname+"','"+System.nanoTime()+"');";
 		try {
 			DatabaseConnector.updateInDatabase(sqlQuery);
@@ -102,6 +108,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean addUserToList(String username, int listNr) {
+		checkConnection();
 		String sqlQuery = "select * from users where username = '"+username+"';";
 		ResultSet set;
 		try {
@@ -120,6 +127,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public ListProperties getList(int listNr) {
+		checkConnection();
 		ListProperties prop = new ListProperties();
 		prop.users = new ArrayList<User>();
 		prop.items = new ArrayList<Item>();
@@ -171,6 +179,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean updateToken(String username, String newToken) {
+		checkConnection();
 		String sqlUpdate = "UPDATE users set token = '"+newToken+"' where username = '"+username+"';";
 		try {
 			DatabaseConnector.updateInDatabase(sqlUpdate);
@@ -183,6 +192,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean updateTime(String username) {
+		checkConnection();
 		String time = System.nanoTime()+"";
 		String sqlUpdate = "UPDATE users set time = '"+time+"' where username = '"+username+"';";
 		try {
@@ -196,6 +206,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean updateTime(int userId) {
+		checkConnection();
 		String time = System.nanoTime()+"";
 		String sqlUpdate = "UPDATE users set time = '"+time+"' where userid = "+userId+";";
 		try {
@@ -209,6 +220,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public int[] getListsForUser(String username) {
+		checkConnection();
 		ArrayList<Integer> listid = new ArrayList<Integer>();
 		int id = getIdFromUsername(username);
 		if(id != -1){
@@ -234,6 +246,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public String getUsernameFromToken(String token) {
+		checkConnection();
 		String sqlQuery = "select * from users where token = '"+token+"';";
 		try {
 			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
@@ -249,6 +262,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public int getIdFromUsername(String username) {
+		checkConnection();
 		String sqlQuery = "select * from users where username = '"+username+"';";
 		ResultSet set;
 		try {
@@ -266,6 +280,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean isValidToken(String token) {
+		checkConnection();
 		String sqlQuery = "select * from users where token = '"+token+"';";
 		try {
 			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
@@ -282,6 +297,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean deleteList(String token, int listId) {
+		checkConnection();
 		ListProperties lp = PlebbitDatabase.db.getList(listId);
 		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" deletelist start with token "+token);
 		WriteSomething.writeInFile(WriteSomething.location, PlebbitDatabase.db.getUsernameFromToken(token)+" deletelist users size "+lp.users.size());
@@ -308,6 +324,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean addItem(String itemName, int listId, int userId) {
+		checkConnection();
 		ListProperties lp = PlebbitDatabase.db.getList(listId);
 		boolean exists = false;
 		for(int i = 0; i < lp.users.size(); i++){
@@ -330,6 +347,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean removeItem(String itemName, int listId, int userId) {
+		checkConnection();
 		ListProperties lp = PlebbitDatabase.db.getList(listId);
 		boolean exists = false;
 		for(int i = 0; i < lp.users.size(); i++){
@@ -356,6 +374,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	}
 	@Override
 	public String getTimeOnToken(String token) {
+		checkConnection();
 		String time = "";
 		String sqlQuery = "select * from users where token = '"+token+"';";
 		ResultSet set;
@@ -373,6 +392,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public String getTimeOnUsername(String username) {
+		checkConnection();
 		String time = "";
 		String sqlQuery = "select * from users where username = '"+username+"';";
 		ResultSet set;
@@ -390,6 +410,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public String getListLastChanged(int listid) {
+		checkConnection();
 		String sqlQuery = "select * from lists where listid = "+listid+";";
 		ResultSet set;
 		try {
@@ -406,6 +427,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean updateListLastChanged(int listid) {
+		checkConnection();
 		String sqlUpdate = "update lists set lastchanged = '"+System.nanoTime()+"' where listid = "+listid+";";
 		try {
 			DatabaseConnector.updateInDatabase(sqlUpdate);
@@ -418,6 +440,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean renameListName(int listid, String newname) {
+		checkConnection();
 		String sqlUpdate = "update lists set listname = '"+newname+"' where listid = "+listid+";";
 		try {
 			DatabaseConnector.updateInDatabase(sqlUpdate);
@@ -430,6 +453,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean setBoughtItem(int listId, String itemName, boolean toSet) {
+		checkConnection();
 		int bool = (toSet) ? 1 : 0;
 		String sqlUpdate = "update items set bought="+bool+" where listId="+listId+" and itemName='"+itemName+"';";
 		try {
@@ -443,6 +467,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public Item getItem(int listId, String itemName) {
+		checkConnection();
 		String sqlQuery = "select * from items where listId="+listId+" and itemName='"+itemName+"';";
 		try {
 			ResultSet set = DatabaseConnector.queryInDatabase(sqlQuery);
@@ -470,6 +495,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public User getUserFromToken(String token) {
+		checkConnection();
 		String sqlQuery = "select * from users where token = "+token+";";
 		ResultSet set;
 		try {
@@ -490,6 +516,7 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 
 	@Override
 	public boolean setItemName(int listId, String itemName, String newName) {
+		checkConnection();
 		String sqlUpdate = "update items set itemname = '"+newName+"' where listid = "+listId+" and itemname='"+itemName+"';";
 		try {
 			DatabaseConnector.updateInDatabase(sqlUpdate);
@@ -498,5 +525,18 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	
+	private void checkConnection(){
+		if(TimeTools.differenceInSeconds(lastDataBaseChange) > 3600){
+			WriteSomething.writeInFile(WriteSomething.location, "Over an hour since last query/update, resetting connection.");
+			if(DatabaseConnector.resetConnection()){
+				WriteSomething.writeInFile(WriteSomething.location, "Reset database connection.");
+			} else{
+				WriteSomething.writeInFile(WriteSomething.location, "Failed to reset database connection.");
+			}
+		}
+		lastDataBaseChange = System.nanoTime();
 	}
 }

@@ -15,7 +15,13 @@ public class TimeTools {
 		}
 		
 		return false;
-		
+	}
+	
+	public static int differenceInSeconds(long oldTime){
+		long diff = System.nanoTime() - oldTime;
+		long inSeconds = diff / 1000000000L;
+		int seconds = (int) inSeconds;
+		return seconds;
 	}
 	
 }
