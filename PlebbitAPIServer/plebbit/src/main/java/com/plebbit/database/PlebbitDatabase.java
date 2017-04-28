@@ -539,4 +539,18 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 		}
 		lastDataBaseChange = System.nanoTime();
 	}
+
+	@Override
+	public boolean setListName(int listId, String listName) {
+		checkConnection();
+		String sqlUpdate = "update lists set listname = '"+listName+"' where listid = "+listId+";";
+		try{
+			DatabaseConnector.updateInDatabase(sqlUpdate);
+			return true;
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+		return false;
+	}
 }
