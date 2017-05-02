@@ -109,7 +109,7 @@ td, th {
     max-width: 0px;
 }
 
-#iteminlist, #listname {
+#bought, #listname, #notbought {
     font-family: 'Roboto', monospace;
     text-decoration: none;
     border: none;
@@ -117,6 +117,10 @@ td, th {
     font-size: 1em;
     text-align: center;
     display: inline;
+}
+
+#bought {
+    opacity: 0.5;
 }
 
 #listname {

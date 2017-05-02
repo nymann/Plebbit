@@ -1,3 +1,4 @@
+import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
 import com.plebbit.plebbit.IPlebbit;
 
@@ -100,10 +101,11 @@ public class Servlet extends HttpServlet {
         }
 
         if (request.getParameter("boughtitemfromlist") != null) {
-            /* Confirm item bought */
+            /* Confirm or Cancel, Item bought status */
             int listId = Integer.parseInt(request.getParameter("listid"));
             String itemName = request.getParameter("boughtitemfromlist");
-            iPlebbit.setBoughtItem(listId, itemName, true, tokenId);
+            Item item = iPlebbit.getItem(listId, itemName, tokenId);
+            iPlebbit.setBoughtItem(listId, itemName, !item.bought, tokenId);
 
             response.sendRedirect("Servlet?shoppinglist=" + listId);
         }
