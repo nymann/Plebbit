@@ -551,6 +551,5 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 			e.printStackTrace();
 		}
 		return false;
-		return false;
 	}
 }

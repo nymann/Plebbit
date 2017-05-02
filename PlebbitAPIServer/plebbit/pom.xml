@@ -11,6 +11,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <jersey.version>1.9</jersey.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -34,7 +35,17 @@
 	    <version>2.0</version>
 	</dependency>
 	
-	
+	<dependency>
+		<groupId>com.sun.jersey</groupId>
+		<artifactId>jersey-json</artifactId>
+		<version>${jersey.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>com.sun.jersey</groupId>
+		<artifactId>jersey-client</artifactId>
+		<version>${jersey.version}</version>
+	</dependency>
 
 	<dependency>
 	  <groupId>com.owlike</groupId>
@@ -58,6 +69,8 @@
 		    <artifactId>jersey-client</artifactId>
 		    <version>2.0</version>
 		</dependency>
+		
+		
 		
 		
 
