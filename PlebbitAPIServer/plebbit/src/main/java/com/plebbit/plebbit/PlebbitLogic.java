@@ -289,7 +289,16 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 	@Override
 	public int getPassedSecondsSinceLastChange(int listid) {
 		String str = PlebbitDatabase.db.getListLastChanged(listid);
-		long convertedStr = Long.parseLong(str);
+		if(str.isEmpty() || str.equals("")){
+			return 0;
+		}
+		long convertedStr;
+		try{
+			convertedStr = Long.parseLong(str);
+		} catch(NumberFormatException e){
+			e.printStackTrace();
+			return 0;
+		}
 		long cur = System.nanoTime();
 		long diff = cur - convertedStr;
 		int secs = (int)(diff / 1000000000L);
@@ -387,10 +396,45 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			}
 		}
 		if(isPart){
+			WriteSomething.writeInFile(WriteSomething.location, name+" is part of list "+listId);
 			if(PlebbitDatabase.db.setItemName(listId, itemName, newItemName)){
 				WriteSomething.writeInFile(WriteSomething.location, name+" renamed "+itemName+" to "+newItemName+" in list "+listId+".");
 			} else{
 				WriteSomething.writeInFile(WriteSomething.location, name+" failed to rename item in list "+listId+".");
+			}
+		} else{
+			WriteSomething.writeInFile(WriteSomething.location, name+" is not part of list "+listId+".");
+		}
+		return false;
+	}
+
+	@Override
+	public boolean renameListName(int listId, String newListName, String token) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method renameListName with properties: token="+token+" listName="+newListName+" listId="+listId);
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return false;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
+			logout(token);
+			return false;
+		}
+		int[] lists = getListOfUser(token);
+		boolean isPart = false;
+		for(int i = 0; i < lists.length; i++){
+			if(lists[i] == listId){
+				isPart = true;
+				break;
+			}
+		}
+		if(isPart){
+			WriteSomething.writeInFile(WriteSomething.location, name+" is part of list "+listId);
+			if(PlebbitDatabase.db.setListName(listId, newListName)){
+				WriteSomething.writeInFile(WriteSomething.location, name+" renamed list to name "+newListName+" in list "+listId+".");
+			} else{
+				WriteSomething.writeInFile(WriteSomething.location, name+" failed to rename list in list "+listId+".");
 			}
 		} else{
 			WriteSomething.writeInFile(WriteSomething.location, name+" is not part of list "+listId+".");

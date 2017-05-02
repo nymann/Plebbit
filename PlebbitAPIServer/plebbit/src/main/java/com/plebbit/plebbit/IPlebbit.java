@@ -46,4 +46,6 @@ public interface IPlebbit {
 	
 	@WebMethod public boolean renameItemName(int listId, String itemName, String newItemName, String token);
 	
+	@WebMethod public boolean renameListName(int listId, String newListName, String token);
+	
 }

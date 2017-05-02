@@ -26,6 +26,16 @@ public class DatabaseConnector {
 		}
     }
     
+    public static boolean resetConnection(){
+    	try {
+			totalConnector = new DatabaseConnector();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return false;
+    }
+    
     public static DatabaseConnector getTotalConnector() throws SQLException{  
     	if (totalConnector == null){
     		totalConnector = new DatabaseConnector();

@@ -9,6 +9,7 @@ import javax.jws.WebService;
 @WebService
 public interface IPlebbit {
     /**
+     *
      * @param username
      * @param password
      * @return token which will be used to confirm name
@@ -60,5 +61,8 @@ public interface IPlebbit {
 
     @WebMethod
     boolean renameItemName(int listId, String itemName, String newItemName, String token);
+
+    @WebMethod
+    boolean renameListName(int listId, String newListName, String token);
 
 }
