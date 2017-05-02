@@ -30,7 +30,6 @@
             <ul>
                 <%
                     boolean loggedIn = (boolean) session.getAttribute("loggedIn");
-                    System.out.println("tokenId from Index.jsp: " + session.getAttribute("tokenId"));
                     if (loggedIn) {
                         out.println("\t\t<li><a href=\"shoppinglists.jsp\">SHOPPING LISTS</a></li>");
                         out.println("\t\t<li><a href=\"about.jsp\">ABOUT</a></li>");

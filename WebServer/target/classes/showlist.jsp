@@ -102,8 +102,16 @@
                         }
                     }
                     out.println("</table>");
+                    /* Add new list */
                     out.println("<form action=\"\\Servlet\" method=\"post\">");
                     out.println("\t<input name=\"additem\" type=\"text\" placeholder=\"add new item here\" id=\"additem\" autofocus=\"autofocus\"/>");
+                    out.println("\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\"/>");
+                    out.println("</form>");
+
+                    /* Invite user */
+                    out.println("<br/>");
+                    out.println("<form action=\"\\Servlet\" method=\"post\">");
+                    out.println("\t<input name=\"inviteuser\" type=\"text\" placeholder=\"Invite a friend\" id=\"additem\"/>");
                     out.println("\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\"/>");
                     out.println("</form>");
                 }

@@ -36,10 +36,6 @@ public class Servlet extends HttpServlet {
         String tokenId = (String) session.getAttribute("tokenId");
         request.setCharacterEncoding("UTF-8");
 
-        if (session.getAttribute("tokenId") != null) {
-            System.out.println("tokenId is not null, it's: " + session.getAttribute("tokenId").toString());
-        }
-
         if (request.getParameter("logout") != null) {
             session = request.getSession(false);
             if (session != null) {
@@ -47,6 +43,22 @@ public class Servlet extends HttpServlet {
                 iPlebbit.logout(tokenId);
                 session.removeAttribute("tokenId");
             }
+        }
+
+        if (request.getParameter("inviteuser") != null) {
+            String invitedUser = request.getParameter("inviteuser");
+            int listId = Integer.parseInt(request.getParameter("listid"));
+            assert session != null;
+            System.out.print(session.getAttribute("username") + " wants to invite " + invitedUser + ", to list " + listId + ",");
+            if (iPlebbit.addUserToList(listId, tokenId, invitedUser)) {
+                System.out.println(" it succeeded.");
+            }
+            else {
+                System.out.println(" it failed.");
+            }
+
+
+            response.sendRedirect("Servlet?shoppinglist=" + listId);
         }
 
         if (request.getParameter("createnewlist") != null) {
@@ -69,9 +81,10 @@ public class Servlet extends HttpServlet {
             /* Name change of list */
 
             int listId = Integer.parseInt(request.getParameter("listid"));
+            String newListName = request.getParameter("nameoflist");
 
             // Changing the name of the list.
-            /* Implement: iPlebbit.renameList(String newName, int lidtId, String tokenId) here, when it's added to the API. */
+            iPlebbit.renameListName(listId, newListName, tokenId);
 
             // Redirect the user back to the previous page.
             response.sendRedirect("Servlet?shoppinglist=" + listId);
@@ -82,9 +95,7 @@ public class Servlet extends HttpServlet {
             String oldItemName = request.getParameter("olditemname");
             String newItemName = request.getParameter("iteminlist");
             int listId = Integer.parseInt(request.getParameter("listid"));
-            System.out.println("Rename requested, old-name: " + oldItemName + ", new-name: " + newItemName + ", list-id: " + listId + ".");
-
-            iPlebbit.renameItemName(listId, oldItemName, newItemName, tokenId); // todo: not working on API end.
+            iPlebbit.renameItemName(listId, oldItemName, newItemName, tokenId);
             response.sendRedirect("Servlet?shoppinglist=" + listId);
         }
 
@@ -99,13 +110,15 @@ public class Servlet extends HttpServlet {
 
         if (request.getParameter("deletelist") != null) {
             int listId = Integer.parseInt(request.getParameter("deletelist"));
-            System.out.println("User wanted to delete list, with list-id: " + listId + ".");
-            if (iPlebbit.deleteList(tokenId, listId)) {
-                System.out.println("delete succeeded.");
-            } else {
-                System.out.println("couldn't delete list.");
-            }
 
+            assert session != null;
+            System.out.print(session.getAttribute("username").toString() + " wanted to delete list, with list-id: " + listId + ",");
+
+            if (iPlebbit.deleteList(tokenId, listId)) {
+                System.out.println("it succeeded.");
+            } else {
+                System.out.println("it failed.");
+            }
 
             response.sendRedirect("shoppinglists.jsp");
         }
@@ -164,20 +177,10 @@ public class Servlet extends HttpServlet {
              *  If not, we get a empty token.
              *  A token is a String in this instance.
              */
-            System.out.println("WE REALLY IN HERE.");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             if (login(username, password, session)) {
-                // Forward to the new page.
-                /*Cookie[] cookies = null;
-                cookies = request.getCookies();
-                if (cookies != null) {
-                    for (Cookie cookie: cookies) {
-                        System.out.print("Name: " + cookie.getName() + ",");
-                        System.out.println("Value: " + cookie.getValue() + ".");
-                    }
-                }*/
-                System.out.println("Logged in success.");
+                System.out.println(username + " logged in successfully.");
             }
             response.sendRedirect("index.jsp");
         }
@@ -188,14 +191,9 @@ public class Servlet extends HttpServlet {
         String tokenId = (String) session.getAttribute("tokenId");
         request.setCharacterEncoding("UTF-8");
         String currentPage = request.getRequestURI();
-        if (tokenId == null) {
-            session.setAttribute("loggedIn", false);
-            tokenId = "";
-            session.setAttribute("tokenId", tokenId);
-        }
-        else {
-            session.setAttribute("loggedIn", isUserLoggedIn(tokenId));
-        }
+
+        session.setAttribute("loggedIn", isUserLoggedIn(tokenId));
+
 
         if (request.getParameter("shoppinglist") != null) {
             int listId = Integer.parseInt(request.getParameter("shoppinglist"));
@@ -246,15 +244,12 @@ public class Servlet extends HttpServlet {
 
     private boolean login(String username, String password, HttpSession session) {
         String tokenId = iPlebbit.login(username, password);
-        System.out.println("login tokenId: " + tokenId);
+        session.setAttribute("username", username);
         session.setAttribute("tokenId", tokenId);
-        System.out.println("Is token still valid? ");
         return iPlebbit.tokenStillValid(tokenId);
     }
 
     private boolean isUserLoggedIn(String tokenId) {
-        //System.out.println("We valid? " + iPlebbit.tokenStillValid(tokenId) + ". Token: " + tokenId);
-        System.out.println("isUserLoggedIn tokenId: " + tokenId);
-        return iPlebbit.tokenStillValid(tokenId) && !tokenId.isEmpty();
+        return tokenId != null && iPlebbit.tokenStillValid(tokenId) && !tokenId.isEmpty();
     }
 }
