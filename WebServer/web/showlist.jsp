@@ -32,7 +32,7 @@
             <!--Menu stuff here-->
             <ul>
                 <%
-                    boolean loggedIn = (boolean) request.getAttribute("loggedIn");
+                    boolean loggedIn = (boolean) session.getAttribute("loggedIn");
                     if (loggedIn) {
                         out.println("\t\t<li><a href=\"shoppinglists.jsp\">SHOPPING LISTS</a></li>");
                         out.println("\t\t<li><a href=\"about.jsp\">ABOUT</a></li>");
@@ -52,7 +52,7 @@
                     out.println("<h2>You are not logged in!</h2>");
                     return;
                 }
-                ListProperties shoppingList = (ListProperties) request.getAttribute("list");
+                ListProperties shoppingList = (ListProperties) session.getAttribute("list");
 
                 if (shoppingList == null) {
                     out.println("<h2>Are you even logged in?</h2>");

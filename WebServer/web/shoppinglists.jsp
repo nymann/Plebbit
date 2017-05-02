@@ -34,7 +34,7 @@
             <!--Menu stuff here-->
             <ul>
                 <%
-                    boolean loggedIn = (boolean) request.getAttribute("loggedIn");
+                    boolean loggedIn = (boolean) session.getAttribute("loggedIn");
                     if (loggedIn) {
                         out.println("\t\t<li><a href=\"shoppinglists.jsp\">SHOPPING LISTS</a></li>");
                         out.println("\t\t<li><a href=\"about.jsp\">ABOUT</a></li>");
@@ -56,7 +56,7 @@
                     return;
                 }
 
-                ListProperties[] shoppingLists = (ListProperties[]) request.getAttribute("shoppingLists");
+                ListProperties[] shoppingLists = (ListProperties[]) session.getAttribute("shoppingLists");
                 if (shoppingLists == null) {
                     out.println("<h2>Are you even logged in?</h2>");
                 }
@@ -65,7 +65,7 @@
                     out.println("<h2>You don't have any shopping lists yet.</h2>");
                 } else {
                     ArrayList<Integer> secondsSinceLastChangeForItemLists = new ArrayList<>();
-                    secondsSinceLastChangeForItemLists = (ArrayList<Integer>) request.getAttribute("secondsSinceLastChange");
+                    secondsSinceLastChangeForItemLists = (ArrayList<Integer>) session.getAttribute("secondsSinceLastChange");
                     out.println("<table>\n" +
                             "\t\t\t\t<tr>\n" +
                             "\t\t\t\t\t<th>List name</th>\n" +
