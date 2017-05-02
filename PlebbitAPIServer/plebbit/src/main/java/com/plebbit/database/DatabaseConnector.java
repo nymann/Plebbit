@@ -28,6 +28,8 @@ public class DatabaseConnector {
     
     public static boolean resetConnection(){
     	try {
+    		mysqlConnection.close();
+    		totalConnector = null;
 			totalConnector = new DatabaseConnector();
 			return true;
 		} catch (SQLException e) {
