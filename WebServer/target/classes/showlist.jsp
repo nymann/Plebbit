@@ -71,62 +71,41 @@
                                 "\t\t\t\t\t<th>Added by</th>\n" +
                                 "\t\t\t\t\t<th>Bought</th>\n" +
                                 "\t\t\t\t\t<th>Delete</th>\n" +
+                                "\t\t\t\t\t<th>Price (Netto)</th>\n" +
                                 "\t\t\t\t</tr>");
 
-
                         for (Item item : shoppingList.items) {
-                            if (item.bought) {
-                                out.println("<tr>\n" +
-                                        "\t\t\t\t\t<td>\n" +
-                                        "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"iteminlist\" type=\"text\" value=\"" + item.name + "\" id=\"bought\">\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"olditemname\" type=\"hidden\" value=\"" + item.name + "\" id=\"bought\">\n" +
-                                        "\t\t\t\t\t\t</form>\n" +
-                                        "\t\t\t\t\t</td>\n" +
-                                        "\t\t\t\t\t<td>\n" +
-                                        "\t\t\t\t\t\t<span id=\"bought\">" + item.user.name + "</span>\n" +
-                                        "\t\t\t\t\t</td>\n" +
-                                        "\t\t\t\t\t<td>\n" +
-                                        "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
-                                        "\t\t\t\t\t\t\t<button name=\"boughtitemfromlist\" type=\"submit\" value=\"" + item.name + "\" id=\"bought\">✓</button>\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
-                                        "\t\t\t\t\t\t</form>\n" +
-                                        "\t\t\t\t\t</td>\n" +
-                                        "\t\t\t\t\t<td>\n" +
-                                        "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
-                                        "\t\t\t\t\t\t\t<button name=\"deleteitemfromlist\" type=\"submit\" value=\"" + item.name + "\" id=\"bought\">X</button>\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
-                                        "\t\t\t\t\t\t</form>\n" +
-                                        "\t\t\t\t\t</td>\n" +
-                                        "\t\t\t\t</tr>");
-                            }
-                            else {
-                                out.println("<tr>\n" +
-                                        "\t\t\t\t\t<td>\n" +
-                                        "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"iteminlist\" type=\"text\" value=\"" + item.name + "\" id=\"notbought\">\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"olditemname\" type=\"hidden\" value=\"" + item.name + "\" id=\"notbought\">\n" +
-                                        "\t\t\t\t\t\t</form>\n" +
-                                        "\t\t\t\t\t</td>\n" +
-                                        "\t\t\t\t\t<td>\n" +
-                                        "\t\t\t\t\t\t<span id=\"notbought\">" + item.user.name + "</span>\n" +
-                                        "\t\t\t\t\t</td>\n" +
-                                        "\t\t\t\t\t<td>\n" +
-                                        "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
-                                        "\t\t\t\t\t\t\t<button name=\"boughtitemfromlist\" type=\"submit\" value=\"" + item.name + "\" id=\"notbought\">Confirm</button>\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
-                                        "\t\t\t\t\t\t</form>\n" +
-                                        "\t\t\t\t\t</td>\n" +
-                                        "\t\t\t\t\t<td>\n" +
-                                        "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
-                                        "\t\t\t\t\t\t\t<button name=\"deleteitemfromlist\" type=\"submit\" value=\"" + item.name + "\" id=\"notbought\">X</button>\n" +
-                                        "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
-                                        "\t\t\t\t\t\t</form>\n" +
-                                        "\t\t\t\t\t</td>\n" +
-                                        "\t\t\t\t</tr>");
-                            }
+                            out.println("<tr>\n" +
+                                    "\t\t\t\t\t<td>\n" +
+                                    "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
+                                    "\t\t\t\t\t\t\t<input name=\"iteminlist\" type=\"text\" value=\"" + item.name + "\" id=\"" + (item.bought ? "bought": "notbought") + "\">\n" +
+                                    "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
+                                    "\t\t\t\t\t\t\t<input name=\"olditemname\" type=\"hidden\" value=\"" + item.name + "\" id=\"" + (item.bought ? "bought": "notbought") + "\">\n" +
+                                    "\t\t\t\t\t\t</form>\n" +
+                                    "\t\t\t\t\t</td>\n" +
+
+                                    "\t\t\t\t\t<td>\n" +
+                                    "\t\t\t\t\t\t<span id=\"" + (item.bought ? "bought":"notbought") + "\">" + item.user.name + "</span>\n" +
+                                    "\t\t\t\t\t</td>\n" +
+
+                                    "\t\t\t\t\t<td>\n" +
+                                    "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
+                                    "\t\t\t\t\t\t\t<button name=\"boughtitemfromlist\" type=\"submit\" value=\"" + item.name + "\" id=\"" + (item.bought ? "bought\">✓": "notbought\">X") + "</button>\n" +
+                                    "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
+                                    "\t\t\t\t\t\t</form>\n" +
+                                    "\t\t\t\t\t</td>\n" +
+
+                                    "\t\t\t\t\t<td>\n" +
+                                    "\t\t\t\t\t\t<form action=\"\\Servlet\" method=\"post\">\n" +
+                                    "\t\t\t\t\t\t\t<button name=\"deleteitemfromlist\" type=\"submit\" value=\"" + item.name + "\" id=\"" + (item.bought ? "bought":"notbought") + "\">X</button>\n" +
+                                    "\t\t\t\t\t\t\t<input name=\"listid\" type=\"hidden\" value=\"" + shoppingList.listId + "\">\n" +
+                                    "\t\t\t\t\t\t</form>\n" +
+                                    "\t\t\t\t\t</td>\n" +
+
+                                    "\t\t\t\t\t<td>\n" +
+                                    "\t\t\t\t\t\t<span id=\"" + (item.bought ? "bought":"notbought") + "\">" + (item.price > 0 ? item.price + " kr." : "") + "</span>\n" +
+                                    "\t\t\t\t\t</td>\n" +
+                                    "\t\t\t\t</tr>");
                         }
                     }
                     out.println("</table>");

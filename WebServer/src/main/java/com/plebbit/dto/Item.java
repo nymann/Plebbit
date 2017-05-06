@@ -5,4 +5,5 @@ public class Item {
 	public String name;
 	public User user;
 	public boolean bought;
+	public double price;
 }

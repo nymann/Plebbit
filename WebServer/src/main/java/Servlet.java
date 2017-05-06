@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Project name: WebServer
@@ -57,7 +59,6 @@ public class Servlet extends HttpServlet {
             else {
                 System.out.println(" it failed.");
             }
-
 
             response.sendRedirect("Servlet?shoppinglist=" + listId);
         }
@@ -200,6 +201,8 @@ public class Servlet extends HttpServlet {
         if (request.getParameter("shoppinglist") != null) {
             int listId = Integer.parseInt(request.getParameter("shoppinglist"));
             ListProperties listInQuestion = iPlebbit.getListFromId(listId, tokenId);
+            listInQuestion.items = Arrays.asList(iPlebbit.getPricesForListFromNetto(listId, tokenId));
+
             session.setAttribute("list", listInQuestion);
             request.getRequestDispatcher("showlist.jsp").forward(request, response);
         }
