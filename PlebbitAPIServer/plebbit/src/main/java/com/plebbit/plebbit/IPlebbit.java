@@ -48,4 +48,6 @@ public interface IPlebbit {
 	
 	@WebMethod public boolean renameListName(int listId, String newListName, String token);
 	
+	@WebMethod public double[] getPricesForListFromNetto(int listId, String token);
+	
 }

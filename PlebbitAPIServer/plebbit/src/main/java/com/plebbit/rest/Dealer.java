@@ -11,6 +11,6 @@ public class Dealer {
 	public String color;
 	public PageFlip pageflip;
 	public String[] category_ids;
-	public String country;
+	//public String country;
 	
 }

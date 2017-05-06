@@ -211,13 +211,27 @@ public class PlebbitClient {
         				}
 						break;
 					case 7: 
-						token = "";
-						isLoggedIn = false;
+						System.out.print("Type id of list: ");
+        				int idOfListToPrice = Integer.parseInt(scanner.nextLine());
+        				if(idOfListToPrice != 0){
+        					double[] dobs = iPlebbit.getPricesForListFromNetto(idOfListToPrice, token);
+        					ListProperties props = iPlebbit.getListFromId(idOfListToPrice, token);
+        					for(int i = 0; i < dobs.length; i++){
+        						System.out.println("Name: "+props.items.get(i).name+" with price: "+dobs[i]);
+        					}
+        				} else{
+        					System.out.println("Invalid list id.");
+        				}
 						break;
         			case 8:
+        				token = "";
+						isLoggedIn = false;
+        				break;
+        			case 9:
         				isControlling = false; // <-- Soft exit
         				break;
         			}
+        			
         		} catch(NumberFormatException e){
         			e.printStackTrace();
         		}
@@ -234,8 +248,9 @@ public class PlebbitClient {
 		System.out.println("4. Add item to list");
 		System.out.println("5. Delete list");
 		System.out.println("6. Set bought on item");
-		System.out.println("7. Logout");
-		System.out.println("8. Exit");
+		System.out.println("7. Find prices on items");
+		System.out.println("8. Logout");
+		System.out.println("9. Exit");
 	}
 	
 	public static void printOptionsNotLoggedIn(){

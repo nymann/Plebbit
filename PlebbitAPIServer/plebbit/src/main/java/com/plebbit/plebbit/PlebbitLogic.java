@@ -17,6 +17,7 @@ import com.plebbit.dto.ListProperties;
 import com.plebbit.dto.User;
 import com.plebbit.helpers.TimeTools;
 import com.plebbit.helpers.WriteSomething;
+import com.plebbit.rest.ETilbudsAvisREST;
 
 import brugerautorisation.transport.soap.Brugeradmin;
 
@@ -440,5 +441,31 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			WriteSomething.writeInFile(WriteSomething.location, name+" is not part of list "+listId+".");
 		}
 		return false;
+	}
+
+	@Override
+	public double[] getPricesForListFromNetto(int listId, String token) {
+		String name = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method getPricesForListFromNetto with properties: token="+token+" listId="+listId);
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return null;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
+			logout(token);
+			return null;
+		}
+		ListProperties props = this.getListFromId(listId, token);
+		String[] array = new String[props.items.size()];
+		for(int i = 0; i < props.items.size(); i++){
+			array[i] = props.items.get(i).name;
+		}
+		String save = "";
+		for(int i = 0; i < array.length; i++){
+			save += array[i]+" ";
+		}
+		WriteSomething.writeInFile(WriteSomething.location, name+ " requested prices for : "+save);
+		return ETilbudsAvisREST.getPriceFromListOfItems(array);
 	}
 }

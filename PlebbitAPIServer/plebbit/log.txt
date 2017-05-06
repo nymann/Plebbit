@@ -3,3 +3,177 @@
 [20170503_120906] Started the server.
 [20170503_121300] Started the server.
 [20170503_121326] Started the server.
+[20170506_151636] Started the server.
+[20170506_151724] Started the server.
+[20170506_151733] User s144827 updated token on login.
+[20170506_151734] User s144827 logged in!
+[20170506_151734] s144827 calling method getListOfUser with properties: token=25564713823266344
+[20170506_151734] s144827 has valid token.
+[20170506_151735] s144827 requested list from user.
+[20170506_151735] s144827 got list for user.
+[20170506_151735] s144827 calling method getListFromId with properties: id=1 token=25564713823266344
+[20170506_151735] s144827 has valid token.
+[20170506_151735] s144827 requested list from id 1
+[20170506_151735] s144827 finished request list from id 1
+[20170506_151740] s144827 calling method getPricesForListFromNetto with properties: token=25564713823266344 listId=1
+[20170506_151740] s144827 has valid token.
+[20170506_151740] s144827 calling method getListFromId with properties: id=1 token=25564713823266344
+[20170506_151740] s144827 has valid token.
+[20170506_151740] s144827 requested list from id 1
+[20170506_151740] s144827 finished request list from id 1
+[20170506_151740] s144827 requested prices for : 
+[20170506_151741] s144827 calling method getListFromId with properties: id=1 token=25564713823266344
+[20170506_151741] s144827 has valid token.
+[20170506_151741] s144827 requested list from id 1
+[20170506_151741] s144827 finished request list from id 1
+[20170506_151931] Started the server.
+[20170506_151944] User s144827 updated token on login.
+[20170506_151944] User s144827 logged in!
+[20170506_151948] s144827 calling method createNewList with properties: token=25694783218437569 listname=testlist
+[20170506_151948] s144827 has valid token.
+[20170506_151948] s144827 added a new list testlist
+[20170506_151949] s144827 calling method getListOfUser with properties: token=25694783218437569
+[20170506_151949] s144827 has valid token.
+[20170506_151949] s144827 requested list from user.
+[20170506_151949] s144827 got list for user.
+[20170506_151949] s144827 calling method getListFromId with properties: id=1 token=25694783218437569
+[20170506_151949] s144827 has valid token.
+[20170506_151949] s144827 requested list from id 1
+[20170506_151949] s144827 finished request list from id 1
+[20170506_151956] s144827 calling method addItemToList with properties: token=25694783218437569 item=test listId=1
+[20170506_151956] s144827 has valid token.
+[20170506_151957] s144827 added item test to list with id 1
+[20170506_152003] s144827 calling method addItemToList with properties: token=25694783218437569 item=juj listId=1
+[20170506_152003] s144827 has valid token.
+[20170506_152003] s144827 added item juj to list with id 1
+[20170506_152007] s144827 calling method getPricesForListFromNetto with properties: token=25694783218437569 listId=1
+[20170506_152007] s144827 has valid token.
+[20170506_152007] s144827 calling method getListFromId with properties: id=1 token=25694783218437569
+[20170506_152007] s144827 has valid token.
+[20170506_152007] s144827 requested list from id 1
+[20170506_152007] s144827 finished request list from id 1
+[20170506_152007] s144827 requested prices for : test juj 
+[20170506_152009] s144827 calling method getListFromId with properties: id=1 token=25694783218437569
+[20170506_152009] s144827 has valid token.
+[20170506_152009] s144827 requested list from id 1
+[20170506_152009] s144827 finished request list from id 1
+[20170506_152030] s144827 calling method createNewList with properties: token=25694783218437569 listname=lol
+[20170506_152030] s144827 has valid token.
+[20170506_152031] s144827 added a new list lol
+[20170506_152037] s144827 calling method addItemToList with properties: token=25694783218437569 item=try listId=2
+[20170506_152037] s144827 has valid token.
+[20170506_152037] s144827 added item try to list with id 2
+[20170506_152038] s144827 calling method getListOfUser with properties: token=25694783218437569
+[20170506_152038] s144827 has valid token.
+[20170506_152038] s144827 requested list from user.
+[20170506_152038] s144827 got list for user.
+[20170506_152038] s144827 calling method getListFromId with properties: id=1 token=25694783218437569
+[20170506_152038] s144827 has valid token.
+[20170506_152039] s144827 requested list from id 1
+[20170506_152039] s144827 finished request list from id 1
+[20170506_152039] s144827 calling method getListFromId with properties: id=2 token=25694783218437569
+[20170506_152039] s144827 has valid token.
+[20170506_152039] s144827 requested list from id 2
+[20170506_152039] s144827 finished request list from id 2
+[20170506_152042] s144827 calling method getPricesForListFromNetto with properties: token=25694783218437569 listId=2
+[20170506_152042] s144827 has valid token.
+[20170506_152042] s144827 calling method getListFromId with properties: id=2 token=25694783218437569
+[20170506_152042] s144827 has valid token.
+[20170506_152042] s144827 requested list from id 2
+[20170506_152042] s144827 finished request list from id 2
+[20170506_152042] s144827 requested prices for : try 
+[20170506_152043] s144827 calling method getListFromId with properties: id=2 token=25694783218437569
+[20170506_152043] s144827 has valid token.
+[20170506_152043] s144827 requested list from id 2
+[20170506_152043] s144827 finished request list from id 2
+[20170506_153006] Started the server.
+[20170506_153059] Started the server.
+[20170506_153109] User s144827 updated token on login.
+[20170506_153110] User s144827 logged in!
+[20170506_153111] s144827 calling method getListOfUser with properties: token=26380525182033640
+[20170506_153111] s144827 has valid token.
+[20170506_153111] s144827 requested list from user.
+[20170506_153111] s144827 got list for user.
+[20170506_153111] s144827 calling method getListFromId with properties: id=1 token=26380525182033640
+[20170506_153111] s144827 has valid token.
+[20170506_153111] s144827 requested list from id 1
+[20170506_153111] s144827 finished request list from id 1
+[20170506_153111] s144827 calling method getListFromId with properties: id=2 token=26380525182033640
+[20170506_153111] s144827 has valid token.
+[20170506_153111] s144827 requested list from id 2
+[20170506_153111] s144827 finished request list from id 2
+[20170506_153116] s144827 calling method getPricesForListFromNetto with properties: token=26380525182033640 listId=1
+[20170506_153116] s144827 has valid token.
+[20170506_153116] s144827 calling method getListFromId with properties: id=1 token=26380525182033640
+[20170506_153116] s144827 has valid token.
+[20170506_153116] s144827 requested list from id 1
+[20170506_153116] s144827 finished request list from id 1
+[20170506_153116] s144827 requested prices for : test juj 
+[20170506_153549] Started the server.
+[20170506_153604] User s144827 updated token on login.
+[20170506_153604] User s144827 logged in!
+[20170506_153607] s144827 calling method getPricesForListFromNetto with properties: token=26675234472789328 listId=53
+[20170506_153607] s144827 has valid token.
+[20170506_153607] s144827 calling method getListFromId with properties: id=53 token=26675234472789328
+[20170506_153607] s144827 has valid token.
+[20170506_153607] s144827 requested list from id 53
+[20170506_153607] s144827 finished request list from id 53
+[20170506_153607] s144827 requested prices for : 
+[20170506_153804] Started the server.
+[20170506_153815] User s144827 updated token on login.
+[20170506_153816] User s144827 logged in!
+[20170506_153817] s144827 calling method getPricesForListFromNetto with properties: token=26806467658688586 listId=53
+[20170506_153817] s144827 has valid token.
+[20170506_153817] s144827 calling method getListFromId with properties: id=53 token=26806467658688586
+[20170506_153817] s144827 has valid token.
+[20170506_153817] s144827 requested list from id 53
+[20170506_153817] s144827 finished request list from id 53
+[20170506_153817] s144827 requested prices for : 
+[20170506_155421] Started the server.
+[20170506_155444] Started the server.
+[20170506_155453] User s144827 updated token on login.
+[20170506_155453] User s144827 logged in!
+[20170506_155456] s144827 calling method getPricesForListFromNetto with properties: token=27804408669002529 listId=53
+[20170506_155456] s144827 has valid token.
+[20170506_155456] s144827 calling method getListFromId with properties: id=53 token=27804408669002529
+[20170506_155456] s144827 has valid token.
+[20170506_155456] s144827 requested list from id 53
+[20170506_155456] s144827 finished request list from id 53
+[20170506_155456] s144827 requested prices for : 
+[20170506_155754] Started the server.
+[20170506_155805] User s144827 updated token on login.
+[20170506_155805] User s144827 logged in!
+[20170506_155807] s144827 calling method getPricesForListFromNetto with properties: token=27995631387063594 listId=53
+[20170506_155807] s144827 has valid token.
+[20170506_155807] s144827 calling method getListFromId with properties: id=53 token=27995631387063594
+[20170506_155807] s144827 has valid token.
+[20170506_155807] s144827 requested list from id 53
+[20170506_155807] s144827 finished request list from id 53
+[20170506_155807] s144827 requested prices for : 
+[20170506_155809] s144827 calling method getListFromId with properties: id=53 token=27995631387063594
+[20170506_155809] s144827 has valid token.
+[20170506_155809] s144827 requested list from id 53
+[20170506_155809] s144827 finished request list from id 53
+[20170506_155815] s144827 calling method getListOfUser with properties: token=27995631387063594
+[20170506_155815] s144827 has valid token.
+[20170506_155815] s144827 requested list from user.
+[20170506_155815] s144827 got list for user.
+[20170506_155815] s144827 calling method getListFromId with properties: id=1 token=27995631387063594
+[20170506_155815] s144827 has valid token.
+[20170506_155815] s144827 requested list from id 1
+[20170506_155815] s144827 finished request list from id 1
+[20170506_155815] s144827 calling method getListFromId with properties: id=2 token=27995631387063594
+[20170506_155815] s144827 has valid token.
+[20170506_155816] s144827 requested list from id 2
+[20170506_155816] s144827 finished request list from id 2
+[20170506_155823] s144827 calling method getPricesForListFromNetto with properties: token=27995631387063594 listId=1
+[20170506_155823] s144827 has valid token.
+[20170506_155823] s144827 calling method getListFromId with properties: id=1 token=27995631387063594
+[20170506_155823] s144827 has valid token.
+[20170506_155823] s144827 requested list from id 1
+[20170506_155823] s144827 finished request list from id 1
+[20170506_155823] s144827 requested prices for : test juj 
+[20170506_155825] s144827 calling method getListFromId with properties: id=1 token=27995631387063594
+[20170506_155825] s144827 has valid token.
+[20170506_155825] s144827 requested list from id 1
+[20170506_155825] s144827 finished request list from id 1
