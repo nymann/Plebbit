@@ -444,7 +444,7 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 	}
 
 	@Override
-	public double[] getPricesForListFromNetto(int listId, String token) {
+	public Item[] getPricesForListFromNetto(int listId, String token) {
 		String name = PlebbitDatabase.db.getUsernameFromToken(token);
 		WriteSomething.writeInFile(WriteSomething.location, name+" calling method getPricesForListFromNetto with properties: token="+token+" listId="+listId);
 		if(!PlebbitDatabase.db.isValidToken(token)){
@@ -466,6 +466,15 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			save += array[i]+" ";
 		}
 		WriteSomething.writeInFile(WriteSomething.location, name+ " requested prices for : "+save);
-		return ETilbudsAvisREST.getPriceFromListOfItems(array);
+		double[] doubs = ETilbudsAvisREST.getPriceFromListOfItems(array);
+		Item[] items = new Item[doubs.length];
+		for(int i = 0; i < items.length; i++){
+			items[i] = new Item();
+			items[i].name = array[i];
+			items[i].user = props.items.get(i).user;
+			items[i].bought = props.items.get(i).bought;
+			items[i].price = doubs[i];
+		}
+		return items;
 	}
 }

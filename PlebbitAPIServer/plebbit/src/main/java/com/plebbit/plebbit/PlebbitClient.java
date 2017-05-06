@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import javax.xml.ws.Service;
 
+import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
 
 import javax.xml.namespace.QName;
@@ -214,10 +215,9 @@ public class PlebbitClient {
 						System.out.print("Type id of list: ");
         				int idOfListToPrice = Integer.parseInt(scanner.nextLine());
         				if(idOfListToPrice != 0){
-        					double[] dobs = iPlebbit.getPricesForListFromNetto(idOfListToPrice, token);
-        					ListProperties props = iPlebbit.getListFromId(idOfListToPrice, token);
+        					Item[] dobs = iPlebbit.getPricesForListFromNetto(idOfListToPrice, token);
         					for(int i = 0; i < dobs.length; i++){
-        						System.out.println("Name: "+props.items.get(i).name+" with price: "+dobs[i]);
+        						System.out.println("Name: "+dobs[i].name+" with price: "+dobs[i].price);
         					}
         				} else{
         					System.out.println("Invalid list id.");
