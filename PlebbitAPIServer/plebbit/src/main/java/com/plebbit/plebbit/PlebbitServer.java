@@ -23,6 +23,7 @@ public class PlebbitServer {
 		try {
 			spil = new PlebbitLogic();
 			Endpoint.publish("http://[::]:9427/plebbit", spil);
+			System.out.println("Started the server!");
 			WriteSomething.writeInFile(WriteSomething.location, "Started the server.");
 		} catch (RemoteException e) {
 			e.printStackTrace();
