@@ -117,6 +117,11 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 			if(set.next()){
 				id = set.getInt(1);
 			}
+			String sqlQueryCheck = "select * from listmembers where listid="+listNr+" and userid="+id+";";
+			ResultSet settwo = DatabaseConnector.queryInDatabase(sqlQueryCheck);
+			if(settwo.next()){
+				return false;
+			}
 			String sqlQueryThree = "INSERT INTO listmembers (listid, userid) VALUES("+listNr+","+id+");";
 			DatabaseConnector.updateInDatabase(sqlQueryThree);
 			return true;
@@ -161,11 +166,18 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 				item.name = setFour.getString(2);
 				item.bought = setFour.getBoolean(4);
 				int userId = setFour.getInt(3);
+				boolean found = false;
 				for(int i = 0 ; i < prop.users.size(); i++){
 					if(prop.users.get(i).userId == userId){
 						item.user = prop.users.get(i);
+						found = true;
 						break;
 					}
+				}
+				if(found == false){
+					item.user = new User();
+					item.user.name = "Unknown";
+					item.user.userId = -1;
 				}
 				prop.items.add(item);
 			}
@@ -317,6 +329,8 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 					e.printStackTrace();
 					return false;
 				}
+			} else {
+				boolean isHere = false;
 			}
 		}
 		return false;
