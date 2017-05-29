@@ -8,6 +8,7 @@ import javax.xml.ws.Service;
 
 import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
+import com.plebbit.dto.User;
 
 import javax.xml.namespace.QName;
 
@@ -115,7 +116,7 @@ public class PlebbitClient {
         					System.out.println("Items:");
         					if(lists[i].items != null){
         						for(int x = 0; x < lists[i].items.size(); x++){
-            						System.out.println("\t"+lists[i].items.get(x).name+" - "+lists[i].items.get(x).user.name +" - "+((lists[i].items.get(x).bought) ? "Bought" : "Not Bought"));
+        							System.out.println("\t"+lists[i].items.get(x).name+" - "+lists[i].items.get(x).user.name +" - "+((lists[i].items.get(x).bought) ? "Bought" : "Not Bought"));
             					}
         					}
         				}
@@ -238,6 +239,7 @@ public class PlebbitClient {
         	}
         }
         scanner.close();
+        
 	}
 	
 	public static void printOptionsLoggedIn(){

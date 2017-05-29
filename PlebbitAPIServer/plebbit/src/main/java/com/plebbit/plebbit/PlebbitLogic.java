@@ -18,6 +18,7 @@ import com.plebbit.dto.User;
 import com.plebbit.helpers.TimeTools;
 import com.plebbit.helpers.WriteSomething;
 import com.plebbit.rest.ETilbudsAvisREST;
+import com.plebbit.rest.offer.Offer;
 
 import brugerautorisation.transport.soap.Brugeradmin;
 
@@ -30,37 +31,53 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 
 	@Override
 	public String login(String username, String password) {
+		System.out.println("START LOGIN");
+		System.out.println("1"+System.currentTimeMillis());
 		Brugeradmin ba;
 		try {
+			
 			URL url = new URL("http://javabog.dk:9901/brugeradmin?wsdl");
 			QName qname = new QName("http://soap.transport.brugerautorisation/", "BrugeradminImplService");
 			Service service = Service.create(url, qname);
 			ba = service.getPort(Brugeradmin.class);
+			System.out.println("2"+System.currentTimeMillis());
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
+			System.out.println("END LOGINERROR");
 			return "";
 		}
 		try{
+			System.out.println("3"+System.currentTimeMillis());
 			ba.hentBruger(username, password);
+			System.out.println("4"+System.currentTimeMillis());
 			if(!PlebbitDatabase.db.userExists(username)){
+				System.out.println("5"+System.currentTimeMillis());
 				PlebbitDatabase.db.createUser(username);
+				System.out.println("6"+System.currentTimeMillis());
 			}
+			System.out.println("7"+System.currentTimeMillis());
 			Random rand = new Random();
 			int num = rand.nextInt(1000);
 			String token = System.nanoTime()+""+num;
+			System.out.println("8"+System.currentTimeMillis());
 			if(PlebbitDatabase.db.updateToken(username, token)){
 				WriteSomething.writeInFile(WriteSomething.location, "User "+username+" updated token on login.");
 			} else{
 				WriteSomething.writeInFile(WriteSomething.location, "User "+username+" failed to update token on login.");
 			}
+			System.out.println("9"+System.currentTimeMillis());
 			PlebbitDatabase.db.updateTime(username);
+			System.out.println("10"+System.currentTimeMillis());
 			WriteSomething.writeInFile(WriteSomething.location, "User "+username+" logged in!");
+			System.out.println("11"+System.currentTimeMillis());
+			System.out.println("END LOGIN");
 			return token;
 			
 		} catch(IllegalArgumentException e){
 			e.printStackTrace();
 			WriteSomething.writeInFile(WriteSomething.location, "User "+username+" failed to log in!");
 		}
+		System.out.println("END LOGIN none");
 		return "";
 	}
 
@@ -476,5 +493,22 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			items[i].price = doubs[i];
 		}
 		return items;
+	}
+
+	@Override
+	public Offer[] getOffersFromItemFRomNetto(String name, String token) {
+		String nameofuser = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method getOffersFromItemFRomNetto with properties: token="+token+" itemname="+name);
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return null;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
+			logout(token);
+			return null;
+		}
+		WriteSomething.writeInFile(WriteSomething.location, name+ " requested prices for : "+name);
+		return ETilbudsAvisREST.getOffersFromItem(name);
 	}
 }

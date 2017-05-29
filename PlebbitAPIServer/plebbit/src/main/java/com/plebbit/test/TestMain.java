@@ -13,12 +13,16 @@ import com.plebbit.database.PlebbitDatabase;
 import com.plebbit.dto.ListProperties;
 import com.plebbit.plebbit.IPlebbit;
 import com.plebbit.plebbit.PlebbitLogic;
+import com.plebbit.rest.ETilbudsAvisREST;
 
 public class TestMain {
 
 	public static void main(String[] args) {
+		System.out.println(System.currentTimeMillis());
 		PlebbitDatabase db = new PlebbitDatabase();
-		PlebbitDatabase.db = db;
+		System.out.println(System.currentTimeMillis());
+		/*
+		
 		try {
 			db.checkTables();
 			System.out.println("Database checking fine...");
