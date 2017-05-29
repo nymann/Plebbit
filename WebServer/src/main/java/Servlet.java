@@ -251,7 +251,7 @@ public class Servlet extends HttpServlet {
                 }
 
                 elapsedTime = (System.nanoTime() - elapsedTime) * Math.pow(10, -6);
-                System.out.println(session.getAttribute("username") + ": requested shoppinglists.jsp, It loaded in " + (int) elapsedTime);
+                System.out.println(session.getAttribute("username") + ": requested shoppinglists.jsp, It loaded in " + (int) elapsedTime + " ms.");
                 break;
 
             case "/index.jsp":
