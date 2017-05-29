@@ -474,31 +474,23 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			return null;
 		}
 		ListProperties props = this.getListFromId(listId, token);
-		String[] array = new String[props.items.size()];
-		for(int i = 0; i < props.items.size(); i++){
-			array[i] = props.items.get(i).name;
-		}
 		String save = "";
-		for(int i = 0; i < array.length; i++){
-			save += array[i]+" ";
+		for(int i = 0; i < props.items.size(); i++){
+			save += props.items.get(i).name+" ";
 		}
 		WriteSomething.writeInFile(WriteSomething.location, name+ " requested prices for : "+save);
-		double[] doubs = ETilbudsAvisREST.getPriceFromListOfItems(array);
-		Item[] items = new Item[doubs.length];
-		for(int i = 0; i < items.length; i++){
-			items[i] = new Item();
-			items[i].name = array[i];
-			items[i].user = props.items.get(i).user;
-			items[i].bought = props.items.get(i).bought;
-			items[i].price = doubs[i];
+		Item[] temp = new Item[props.items.size()];
+		for(int i = 0; i < props.items.size(); i++){
+			temp[i] = props.items.get(i);
 		}
-		return items;
+		Item[] doubs = ETilbudsAvisREST.getPriceFromListOfItems(temp);
+		return doubs;
 	}
 
 	@Override
 	public Offer[] getOffersFromItemFRomNetto(String name, String token) {
 		String nameofuser = PlebbitDatabase.db.getUsernameFromToken(token);
-		WriteSomething.writeInFile(WriteSomething.location, name+" calling method getOffersFromItemFRomNetto with properties: token="+token+" itemname="+name);
+		WriteSomething.writeInFile(WriteSomething.location, nameofuser+" calling method getOffersFromItemFRomNetto with properties: token="+token+" itemname="+name);
 		if(!PlebbitDatabase.db.isValidToken(token)){
 			return null;
 		}

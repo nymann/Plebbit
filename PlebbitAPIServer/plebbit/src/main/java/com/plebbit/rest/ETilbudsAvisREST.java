@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
+import com.plebbit.dto.Item;
 import com.plebbit.rest.offer.Offer;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -23,8 +24,8 @@ public class ETilbudsAvisREST {
 	public static final String secret = "00j278fc1wdew9pbvoqud1buaeh7vx3n";
 	public static final String normal = "00j278fc1wyfnymdnvb0sm8rnz4qpc4h";
 	
-	public static double[] getPriceFromListOfItems(String[] items){
-		double[] toBeReturned = new double[items.length];
+	public static Item[] getPriceFromListOfItems(Item[] items){
+		Item[] toBeReturned = items;
 		Client client = Client.create();
         WebResource webResource = client.resource("https://api.etilbudsavis.dk/v2/sessions");
 
@@ -57,7 +58,7 @@ public class ETilbudsAvisREST {
 		    MultivaluedMap<String, String> dealerParams = new MultivaluedMapImpl();
 		    dealerParams.add("_token", xToken);
 		    dealerParams.add("_signature", xSignature);
-		    dealerParams.add("query", items[i]);
+		    dealerParams.add("query", items[i].name);
 		    dealerParams.add("offset", "0");
 		    dealerParams.add("limit", "50");
 		    ClientResponse dealerResponse = dealerResource
@@ -70,14 +71,13 @@ public class ETilbudsAvisREST {
 		    	
 		    	if(offers[x].branding.name.toLowerCase().equals("netto") && offers[x].pricing.currency.toLowerCase().equals("dkk")){
 		    		//System.out.println("#"+x+" : HEADING "+offers[x].heading+" : DESCRIPTION "+offers[x].description+" : BRANDING "+offers[x].branding.name+" : CURRENCY "+offers[x].pricing.currency);
-			    	toBeReturned[i] = offers[x].pricing.price;
+			    	toBeReturned[i].price = offers[x].pricing.price;
+			    	toBeReturned[i].description = offers[x].description;
 			    	break;
 			    }
 		    }    
 		}
-		for(int i = 0; i < toBeReturned.length; i++){
-			System.out.println("#fghfgh"+i+" : "+items[i]+" : "+toBeReturned[i]);
-		}
+		
 		return toBeReturned;
 	}
 	
