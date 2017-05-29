@@ -52,9 +52,24 @@
         <div id="mid">
 
             <%
+                boolean sessionPriceSetting = true;
+                if (session.getAttribute("priceFromNetto") != null) {
+                    sessionPriceSetting = (boolean) session.getAttribute("priceFromNetto");
+                }
+
                 if (loggedIn) {
                     /* User is logged in, what should we display then? */
-                    out.println("<h3>You are logged in</h3>");
+                    out.println("<h3>Do you want to get prices from Netto when viewing a shopping list?</h3>");
+                    out.println("<form id=\"priceForm\" action=\"Servlet\" method=\"post\">\n" +
+                            "\t\t<input type=\"radio\" name=\"getPrices\" value=\"yes\" onClick=\"validateGetPrices();\"" + (sessionPriceSetting ? " checked" : "") + ">Yes\n" +
+                            "\t\t<input type=\"radio\" name=\"getPrices\" value=\"no\" onClick=\"validateGetPrices();\"" + (sessionPriceSetting ? "" : " checked") + ">No\n" +
+                            "\t</form>\n" +
+                            "\n" +
+                            "\t<script type=\"text/javascript\">\n" +
+                            "\t\tfunction validateGetPrices() {\n" +
+                            "\t\t\tdocument.getElementById(\"priceForm\").submit();\n" +
+                            "\t\t}\n" +
+                            "\t</script>");
                 } else {
                     out.println("<div id=\"login\">");
                     out.println("<form action=\"Servlet\" class=\"login-form\" method=\"post\">");

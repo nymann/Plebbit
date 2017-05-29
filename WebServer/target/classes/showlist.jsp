@@ -55,6 +55,7 @@
                 ListProperties shoppingList = (ListProperties) session.getAttribute("list");
 
                 if (shoppingList == null) {
+                    /* This should never happen. */
                     out.println("<h2>Are you even logged in?</h2>");
                 } else {
                     out.println("<form action=\"\\Servlet\" method=\"post\">\n" +

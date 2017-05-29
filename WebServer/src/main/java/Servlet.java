@@ -1,4 +1,3 @@
-import com.google.common.base.Stopwatch;
 import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
 import com.plebbit.plebbit.IPlebbit;
@@ -17,9 +16,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Project name: WebServer
@@ -52,6 +48,16 @@ public class Servlet extends HttpServlet {
             }
         }
 
+        if (request.getParameter("getPrices") != null) {
+            String priceSetting = request.getParameter("getPrices");
+            boolean priceSet;
+            priceSet = priceSetting.equals("yes");
+            if (session != null) {
+                session.setAttribute("priceFromNetto", priceSet);
+            }
+            response.sendRedirect("index.jsp");
+        }
+
         if (request.getParameter("inviteuser") != null) {
             String invitedUser = request.getParameter("inviteuser");
             int listId = Integer.parseInt(request.getParameter("listid"));
@@ -59,8 +65,7 @@ public class Servlet extends HttpServlet {
             System.out.print(session.getAttribute("username") + " wants to invite " + invitedUser + ", to list " + listId + ",");
             if (iPlebbit.addUserToList(listId, tokenId, invitedUser)) {
                 System.out.println(" it succeeded.");
-            }
-            else {
+            } else {
                 System.out.println(" it failed.");
             }
             response.sendRedirect("Servlet?shoppinglist=" + listId);
@@ -187,8 +192,7 @@ public class Servlet extends HttpServlet {
             String password = request.getParameter("password");
             if (login(username, password, session)) {
                 System.out.println(username + " logged in successfully.");
-            }
-            else {
+            } else {
                 System.out.println("wrong username/password.");
             }
             response.sendRedirect("index.jsp");
@@ -199,8 +203,8 @@ public class Servlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         String tokenId = (String) session.getAttribute("tokenId");
         request.setCharacterEncoding("UTF-8");
+        String username = (String) session.getAttribute("username");
         String currentPage = request.getRequestURI();
-
         session.setAttribute("loggedIn", isUserLoggedIn(tokenId));
 
 
@@ -209,11 +213,16 @@ public class Servlet extends HttpServlet {
 
             int listId = Integer.parseInt(request.getParameter("shoppinglist"));
             ListProperties listInQuestion = iPlebbit.getListFromId(listId, tokenId);
-            if (listInQuestion.items != null && listInQuestion.items.size() > 0) {
-                listInQuestion.items = Arrays.asList(iPlebbit.getPricesForListFromNetto(listId, tokenId));
+            System.out.println(username + ": Got the list from PlebbitAPI after " + (System.nanoTime() - nanoTime) * Math.pow(10, -6) + " ms.");
+            boolean getNettoPrices = true;
+            if (session.getAttribute("priceFromNetto") != null) {
+                getNettoPrices = (boolean) session.getAttribute("priceFromNetto");
             }
-            double elapsedTime = (System.nanoTime() - nanoTime) * Math.pow(10, -6);
-            System.out.println("Line 207 to 213, it took " + elapsedTime + " ms.");
+
+            if (listInQuestion.items != null && listInQuestion.items.size() > 0 && getNettoPrices) {
+                listInQuestion.items = Arrays.asList(iPlebbit.getPricesForListFromNetto(listId, tokenId));
+                System.out.println(username + ": Now we have the prices too, from start to finish it took " + (int) ((System.nanoTime() - nanoTime) * Math.pow(10, -6)) + " ms.");
+            }
 
             session.setAttribute("list", listInQuestion);
             request.getRequestDispatcher("showlist.jsp").forward(request, response);
@@ -221,15 +230,16 @@ public class Servlet extends HttpServlet {
 
         switch (currentPage) {
             case "/shoppinglists.jsp":
-                double nanoTime = System.nanoTime();
+                double elapsedTime = System.nanoTime();
+
                 int[] userListIds = iPlebbit.getListOfUser(tokenId);
                 if (userListIds == null || !iPlebbit.tokenStillValid(tokenId)) {
                     /* we are no longer logged in */
-
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 } else {
                     ArrayList<ListProperties> temp = new ArrayList<>();
                     ArrayList<Integer> secondsSinceLastChange = new ArrayList<>();
+
                     for (int id : userListIds) {
                         temp.add(iPlebbit.getListFromId(id, tokenId));
                         secondsSinceLastChange.add(iPlebbit.getPassedSecondsSinceLastChange(id));
@@ -237,9 +247,11 @@ public class Servlet extends HttpServlet {
 
                     session.setAttribute("secondsSinceLastChange", secondsSinceLastChange);
                     session.setAttribute("shoppingLists", temp.toArray(new ListProperties[temp.size()]));
+
                 }
-                double elapsedTime = (System.nanoTime() - nanoTime) * Math.pow(10, -6);
-                System.out.println("Line 222 to 239, it took " + elapsedTime + " ms.");
+
+                elapsedTime = (System.nanoTime() - elapsedTime) * Math.pow(10, -6);
+                System.out.println(session.getAttribute("username") + ": requested shoppinglists.jsp, It loaded in " + (int) elapsedTime);
                 break;
 
             case "/index.jsp":
@@ -267,9 +279,8 @@ public class Servlet extends HttpServlet {
             tokenId = iPlebbit.login(username, password);
             session.setAttribute("username", username);
             session.setAttribute("tokenId", tokenId);
-        }
-        catch (ClientTransportException cte) {
-            System.out.println("user is trying to login as, username: " + username + ", password: " + password);
+        } catch (ClientTransportException cte) {
+            System.out.println("Someone is trying to login as, username: " + username + ", password: " + password);
         }
 
         return iPlebbit.tokenStillValid(tokenId);
