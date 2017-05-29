@@ -104,7 +104,7 @@
                                     "\t\t\t\t\t</td>\n" +
 
                                     "\t\t\t\t\t<td>\n" +
-                                    "\t\t\t\t\t\t<span id=\"" + (item.bought ? "bought":"notbought") + "\">" + (item.price > 0 ? item.price + " kr." : "") + "</span>\n" +
+                                    "\t\t\t\t\t\t<span id=\"" + (item.bought ? "bought":"notbought") + "\">" + (item.price > 0 ? item.price + " kr.<br/>" + item.description : "") + "</span>\n" +
                                     "\t\t\t\t\t</td>\n" +
                                     "\t\t\t\t</tr>");
                         }

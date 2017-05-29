@@ -6,4 +6,5 @@ public class Item {
 	public User user;
 	public boolean bought;
 	public double price;
+	public String description = "";
 }

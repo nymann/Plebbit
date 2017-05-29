@@ -67,5 +67,4 @@ public interface IPlebbit {
 
     @WebMethod
     Item[] getPricesForListFromNetto(int listId, String token);
-
 }

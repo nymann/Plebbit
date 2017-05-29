@@ -8,5 +8,4 @@ public class ListProperties {
 	public String nameOfList;
 	public List<User> users;
 	public List<Item> items;
-	
 }

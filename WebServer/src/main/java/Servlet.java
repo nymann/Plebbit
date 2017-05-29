@@ -213,7 +213,7 @@ public class Servlet extends HttpServlet {
 
             int listId = Integer.parseInt(request.getParameter("shoppinglist"));
             ListProperties listInQuestion = iPlebbit.getListFromId(listId, tokenId);
-            System.out.println(username + ": Got the list from PlebbitAPI after " + (System.nanoTime() - nanoTime) * Math.pow(10, -6) + " ms.");
+            System.out.println(username + ": Got the list from PlebbitAPI after " + (int) ((System.nanoTime() - nanoTime) * Math.pow(10, -6)) + " ms.");
             boolean getNettoPrices = true;
             if (session.getAttribute("priceFromNetto") != null) {
                 getNettoPrices = (boolean) session.getAttribute("priceFromNetto");
