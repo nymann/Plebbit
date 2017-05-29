@@ -55,7 +55,7 @@ public class Servlet extends HttpServlet {
             if (session != null) {
                 session.setAttribute("priceFromNetto", priceSet);
             }
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("shoppinglists.jsp");
         }
 
         if (request.getParameter("inviteuser") != null) {
@@ -251,7 +251,7 @@ public class Servlet extends HttpServlet {
                 }
 
                 elapsedTime = (System.nanoTime() - elapsedTime) * Math.pow(10, -6);
-                System.out.println(session.getAttribute("username") + ": requested shoppinglists.jsp, It loaded in " + (int) elapsedTime + " ms.");
+                System.out.println(session.getAttribute("username") + ": requested shoppinglists.jsp, it loaded in " + (int) elapsedTime + " ms.");
                 break;
 
             case "/index.jsp":
