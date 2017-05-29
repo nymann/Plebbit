@@ -542,16 +542,12 @@ public class PlebbitDatabase implements IPlebbitDatabase{
 	}
 	
 	
-	private void checkConnection(){
+	public boolean checkConnection(){
 		if(TimeTools.differenceInSeconds(lastDataBaseChange) > 3600){
-			WriteSomething.writeInFile(WriteSomething.location, "Over an hour since last query/update, resetting connection.");
-			if(DatabaseConnector.resetConnection()){
-				WriteSomething.writeInFile(WriteSomething.location, "Reset database connection.");
-			} else{
-				WriteSomething.writeInFile(WriteSomething.location, "Failed to reset database connection.");
-			}
+			return true;
 		}
-		lastDataBaseChange = System.nanoTime();
+		return false;
+		
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import javax.jws.WebService;
 
 import com.plebbit.dto.Item;
 import com.plebbit.dto.ListProperties;
+import com.plebbit.rest.offer.Offer;
 
 @WebService
 public interface IPlebbit {
@@ -49,5 +50,7 @@ public interface IPlebbit {
 	@WebMethod public boolean renameListName(int listId, String newListName, String token);
 	
 	@WebMethod public Item[] getPricesForListFromNetto(int listId, String token);
+	
+	@WebMethod public Offer[] getOffersFromItemFRomNetto(String name, String token);
 	
 }

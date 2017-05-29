@@ -80,33 +80,52 @@ public class ETilbudsAvisREST {
 		}
 		return toBeReturned;
 	}
+	
+	public static Offer[] getOffersFromItem(String item){
+		Client client = Client.create();
+        WebResource webResource = client.resource("https://api.etilbudsavis.dk/v2/sessions");
 
-    private static void printResponseToSOut(ClientResponse response) {
-        System.out.println("\n\n\n");
-        System.out.println("RES: " + response.getLength());
-        System.out.println("RES: " + response.getLanguage());
-        System.out.println("RES: " + response.getStatus());
-        System.out.println("RES: " + response.getClient().toString());
-        System.out.println("RES: " + response.getHeaders().toString()); //
-        System.out.println("RES: " + response.getClient().getProperties().toString());
-    }
-    
-    public static void main(String[] args) {
-		String[] array = new String[7];
-		array[0] = "lol";
-		array[1] = "oksemørbrad";
-		array[2] = "død biad";
-		array[3] = "død bias";
-		array[4] = "bias på et sølvfad";
-		array[5] = "Plebias";
-		array[6] = "s144828";
-		double[] res = getPriceFromListOfItems(array);
-		for(int i = 0; i < res.length; i++){
-			System.out.println("NUM #"+i+" : "+array[i]+" : "+res[i]);
-		}
+        ClientResponse response = webResource
+                .queryParam("api_key", normal)
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .post(ClientResponse.class);
+
+        if (response.getStatus() != 200 && response.getStatus() != 201) {
+        	return null;
+        }
+
+        BasicResponse basicResponse = response.getEntity(BasicResponse.class);
+		String xSignature = generateSHA256(secret.concat(basicResponse.token));
+		String xToken = basicResponse.token;
+
+		MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
+		queryParams.add("_token", xToken);
+		queryParams.add("_signature", xSignature);
+
+		ClientResponse sessionInformation = webResource
+		        .queryParams(queryParams)
+		        .header("Content-Type", "application/json")
+		        .header("Accept", "application/json")
+		        .get(ClientResponse.class);
+		
+		WebResource dealerResource = client.resource("https://api.etilbudsavis.dk/v2/offers/search");
+		MultivaluedMap<String, String> dealerParams = new MultivaluedMapImpl();
+		dealerParams.add("_token", xToken);
+		dealerParams.add("_signature", xSignature);
+		dealerParams.add("query", item);
+		dealerParams.add("offset", "0");
+		dealerParams.add("limit", "50");
+		ClientResponse dealerResponse = dealerResource
+		        .queryParams(dealerParams)
+		        .header("Content-Type", "application/json")
+		        .header("Accept", "application/json")
+		        .get(ClientResponse.class);
+		Offer[] offers = dealerResponse.getEntity(Offer[].class);
+		return offers;
 	}
-	
-	
+
+
 	
 	/**
 	 * Taken from docs.api.etilbudsavis.dk

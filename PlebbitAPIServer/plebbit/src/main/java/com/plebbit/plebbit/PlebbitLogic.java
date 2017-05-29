@@ -18,6 +18,7 @@ import com.plebbit.dto.User;
 import com.plebbit.helpers.TimeTools;
 import com.plebbit.helpers.WriteSomething;
 import com.plebbit.rest.ETilbudsAvisREST;
+import com.plebbit.rest.offer.Offer;
 
 import brugerautorisation.transport.soap.Brugeradmin;
 
@@ -492,5 +493,22 @@ public class PlebbitLogic extends UnicastRemoteObject implements IPlebbit{
 			items[i].price = doubs[i];
 		}
 		return items;
+	}
+
+	@Override
+	public Offer[] getOffersFromItemFRomNetto(String name, String token) {
+		String nameofuser = PlebbitDatabase.db.getUsernameFromToken(token);
+		WriteSomething.writeInFile(WriteSomething.location, name+" calling method getOffersFromItemFRomNetto with properties: token="+token+" itemname="+name);
+		if(!PlebbitDatabase.db.isValidToken(token)){
+			return null;
+		}
+		String loadedTime = PlebbitDatabase.db.getTimeOnToken(token);
+		if(TimeTools.isExpired(loadedTime)){
+			WriteSomething.writeInFile(WriteSomething.location, name+" has expired token.");
+			logout(token);
+			return null;
+		}
+		WriteSomething.writeInFile(WriteSomething.location, name+ " requested prices for : "+name);
+		return ETilbudsAvisREST.getOffersFromItem(name);
 	}
 }
